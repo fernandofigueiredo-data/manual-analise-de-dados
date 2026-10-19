@@ -1,0 +1,12 @@
+# ambientes de auditoria (recriáveis — ver auditoria_ml.md, seção 6)
+.venv-auditoria/
+.venv-tf/
+.uv-python/
+
+# artefatos de execução
+catboost_info/
+__pycache__/
+*.pyc
+
+# sistema
+.DS_Store

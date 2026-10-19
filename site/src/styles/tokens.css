@@ -1,0 +1,149 @@
+/*
+ * Tokens do Design System — Developer / Data Science / AI (v1.0, Fernando Figueiredo, 2026-09-24).
+ * Fonte: design-system/design-system-visual.md e docs/DESIGN-SYSTEM.md.
+ * ÚNICO arquivo autorizado a declarar valores literais de cor, fonte, tamanho, espaçamento,
+ * raio e duração. O restante do CSS usa apenas var(--…).
+ *
+ * Dark-first: :root é o sistema escuro (padrão). O modo claro é um sistema derivado à parte
+ * (seção 9 do design system), em :root[data-theme="light"], com os acentos escurecidos para AA.
+ */
+:root {
+  /* ---------- paleta (seção 1 e seção 10 do design system) ---------- */
+  --color-bg-base: #101522;            /* Navy: o chão */
+  --color-bg-surface: #151C2B;         /* Grafite: cards, painéis, sidebar, tabelas */
+  --color-bg-surface-raised: #202938;  /* Grafite secundário: modais, dropdowns, hover, código */
+
+  --color-accent-primary: #00E5FF;     /* Ciano: onde eu clico */
+  --color-accent-success: #39FF88;     /* Verde: isso funcionou; código */
+  --color-accent-data: #A970FF;        /* Roxo: isso é dado ou modelo (nunca interação) */
+  --color-accent-warning: #FFB84D;     /* Âmbar: isso precisa da minha atenção */
+  --color-accent-error: #FF5C5C;       /* Vermelho de baixa saturação sugerido na seção 7 (contraste validado) */
+
+  --color-text-primary: #F2F7FF;
+  --color-text-secondary: #AAB8CC;
+
+  /* ---------- derivados (só misturas da paleta; ver docs/DESIGN-SYSTEM.md, seção 3) ---------- */
+  --color-on-accent: var(--color-bg-base);                     /* texto sobre Ciano: Navy (seção 6) */
+  --color-accent-data-text: color-mix(in srgb, var(--color-accent-data) 85%, var(--color-text-primary)); /* roxo em texto pequeno sobre o Grafite secundário */
+  --color-border: var(--color-bg-surface-raised);              /* borda de card (seção 6) */
+  --color-border-strong: var(--color-text-secondary);          /* botão secundário (seção 6) */
+  --color-border-input: color-mix(in srgb, var(--color-text-secondary) 60%, var(--color-bg-surface)); /* 30% na seção 6; 60% para 3:1 */
+  --color-focus-ring: color-mix(in srgb, var(--color-accent-primary) 60%, transparent);               /* 40% na seção 7; 60% para 3:1 */
+  --tint-primary: color-mix(in srgb, var(--color-accent-primary) 15%, var(--color-bg-surface));
+  --tint-success: color-mix(in srgb, var(--color-accent-success) 15%, var(--color-bg-surface));
+  --tint-data: color-mix(in srgb, var(--color-accent-data) 15%, var(--color-bg-surface));
+  --tint-warning: color-mix(in srgb, var(--color-accent-warning) 15%, var(--color-bg-surface));
+  --tint-error: color-mix(in srgb, var(--color-accent-error) 15%, var(--color-bg-surface));
+  --line-primary: color-mix(in srgb, var(--color-accent-primary) 30%, var(--color-bg-surface));
+  --line-success: color-mix(in srgb, var(--color-accent-success) 30%, var(--color-bg-surface));
+  --line-data: color-mix(in srgb, var(--color-accent-data) 30%, var(--color-bg-surface));
+  --line-warning: color-mix(in srgb, var(--color-accent-warning) 30%, var(--color-bg-surface));
+  --line-error: color-mix(in srgb, var(--color-accent-error) 30%, var(--color-bg-surface));
+  --hover-accent: color-mix(in srgb, var(--color-accent-primary) 92%, var(--color-text-primary)); /* clarear 8% (seção 7) */
+  --active-accent: color-mix(in srgb, var(--color-accent-primary) 85%, var(--color-bg-base));     /* escurecer 15% */
+  --color-overlay: color-mix(in srgb, var(--color-bg-base) 80%, transparent);
+  --glow-cta: 0 0 24px color-mix(in srgb, var(--color-accent-primary) 45%, transparent);           /* único glow permitido (seção 8) */
+
+  /* ---------- gráficos SVG do guia de relatório ---------- */
+  --chart-destaque: var(--color-accent-primary);   /* "o dado que importa" */
+  --chart-contexto: color-mix(in srgb, var(--color-text-secondary) 45%, var(--color-bg-surface));
+  --chart-texto: var(--color-text-primary);
+  --chart-texto-sec: var(--color-text-secondary);
+  --chart-eixo: var(--color-bg-surface-raised);
+  --chart-pizza-1: var(--color-accent-data);       /* exemplo de excesso de cores */
+  --chart-pizza-2: var(--color-accent-warning);
+  --chart-pizza-3: var(--color-accent-success);
+
+  /* ---------- amostras de cor do guia de visualização: as cores que as figuras usam no tema do site ---------- */
+  --chart-guia-cinza: color-mix(in srgb, var(--color-text-secondary) 50%, var(--color-bg-surface));
+  --chart-guia-azul: var(--color-accent-primary);
+  --chart-guia-laranja: var(--color-accent-warning);
+
+  /* ---------- tipografia (seção 3) ---------- */
+  --font-family-ui: 'Inter', -apple-system, 'SF Pro Text', system-ui, sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, monospace;
+  --font-size-xs: 0.8rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.563rem;
+  --font-size-2xl: 1.953rem;
+  --font-size-3xl: 2.441rem;
+  --font-size-code-inline: 0.9em;
+  --font-size-math: 1.05em;
+  --weight-regular: 400;
+  --weight-medium: 500;      /* labels e botões */
+  --weight-semibold: 600;    /* títulos */
+  --weight-headline: 700;    /* só headline (seção 3) */
+  --leading-tight: 1.2;
+  --leading-snug: 1.45;
+  --leading-base: 1.65;
+  --tracking-caps: 0.06em;
+  --measure: 60ch;     /* ~76 caracteres de Inter por linha (1ch = largura do "0") */
+
+  /* ---------- espaçamento: grid de 8px (seção 4) ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+
+  /* ---------- raio, borda, movimento ---------- */
+  --radius-base: 12px;
+  --radius-sm: 8px;          /* derivado do grid de 8px para elementos pequenos */
+  --radius-full: 999px;      /* pílulas */
+  --border-width: 1px;
+  --border-width-strong: 2px;
+  --focus-width: 2px;
+  --focus-offset: 2px;
+  --transition-base: 150ms ease;
+
+  /* ---------- layout ---------- */
+  --layout-header: 3.5rem;
+  --layout-sidebar: 17.5rem;
+  --layout-toc: 14rem;
+  --layout-content: 52rem;
+  --layout-wide: 90rem;
+  --target-min: 44px;
+  --target-compact: 2.25rem;   /* 36px: controles secundários densos (WCAG 2.2 AA 2.5.8 pede 24px) */
+  --icon-sm: 1rem;
+  --icon-md: 1.25rem;
+  --z-header: 20;
+  --z-drawer: 30;
+  --z-dialog: 40;
+
+  color-scheme: dark;
+}
+
+/* ---------- sistema claro derivado (opcional, escolhido no botão de tema) ---------- */
+:root[data-theme="light"] {
+  --color-bg-base: #F2F7FF;                                                        /* = text-primary */
+  --color-bg-surface: color-mix(in srgb, #F2F7FF 86%, #AAB8CC);                    /* #E8EEF8 */
+  --color-bg-surface-raised: color-mix(in srgb, #F2F7FF 72%, #AAB8CC);             /* #DEE5F1 */
+  --color-text-primary: #101522;                                                   /* = Navy */
+  --color-text-secondary: color-mix(in srgb, #AAB8CC 50%, #101522);                /* #5D6677 */
+  --color-accent-primary: color-mix(in srgb, #00E5FF 40%, #101522);                /* #0A687A */
+  --color-accent-success: color-mix(in srgb, #39FF88 40%, #101522);                /* #20734B */
+  --color-accent-data: color-mix(in srgb, #A970FF 60%, #101522);                   /* #6C4CA7 */
+  --color-accent-warning: color-mix(in srgb, #FFB84D 45%, #101522);                /* #7C5E35 */
+  --color-accent-error: color-mix(in srgb, #FF5C5C 60%, #101522);                  /* #9F4045 */
+  --color-on-accent: #F2F7FF;
+  --color-accent-data-text: var(--color-accent-data);
+  /* tons de fundo mais leves no claro: o acento escurecido precisa de 4,5:1 sobre eles */
+  --tint-primary: color-mix(in srgb, var(--color-accent-primary) 8%, var(--color-bg-surface));
+  --tint-success: color-mix(in srgb, var(--color-accent-success) 8%, var(--color-bg-surface));
+  --tint-data: color-mix(in srgb, var(--color-accent-data) 8%, var(--color-bg-surface));
+  --tint-warning: color-mix(in srgb, var(--color-accent-warning) 8%, var(--color-bg-surface));
+  --tint-error: color-mix(in srgb, var(--color-accent-error) 8%, var(--color-bg-surface));
+  --hover-accent: color-mix(in srgb, var(--color-accent-primary) 88%, #101522);
+  --glow-cta: 0 0 0 transparent;
+  color-scheme: light;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --transition-base: 0ms linear; }
+}

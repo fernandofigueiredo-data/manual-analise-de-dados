@@ -1,0 +1,58 @@
+/* Página inicial e aberturas de módulo. Superfície de leitura: listas, não grades de cartões. */
+.heroi { padding: var(--space-8) 0 var(--space-12); border-bottom: var(--border-width) solid var(--color-border); }
+.heroi h1 { font-size: var(--font-size-3xl); font-weight: var(--weight-headline); max-width: 20ch; }
+.heroi__sub { margin: var(--space-2) 0 var(--space-6); font-size: var(--font-size-lg); font-weight: var(--weight-medium); color: var(--color-text-secondary); }
+.heroi__citacao { font-size: var(--font-size-lg); }
+.heroi__acoes { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-top: var(--space-8); }
+.heroi__fatos { margin: var(--space-6) 0 0; font-family: var(--font-family-mono); font-size: var(--font-size-sm); color: var(--color-text-secondary); }
+
+.secao-inicio { margin-top: var(--space-12); }
+.secao-inicio > h2 { margin-top: 0; }
+
+/* trilha: a ordem é informação, por isso lista ordenada com o número do módulo */
+.trilha { list-style: none; margin: 0; padding: 0; border-top: var(--border-width) solid var(--color-border); }
+.trilha li { margin: 0; border-bottom: var(--border-width) solid var(--color-border); }
+.trilha__item {
+  display: grid;
+  grid-template-columns: var(--space-8) minmax(0, 1fr) auto;
+  gap: var(--space-4);
+  align-items: baseline;
+  padding: var(--space-4) var(--space-2);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: background-color var(--transition-base);
+}
+.trilha__item:hover { background: var(--color-bg-surface); }
+.trilha__num { font-family: var(--font-family-mono); color: var(--color-text-secondary); }
+.trilha__texto { display: grid; gap: var(--space-1); }
+.trilha__titulo { font-size: var(--font-size-lg); font-weight: var(--weight-semibold); color: var(--color-accent-primary); }
+.trilha__item:hover .trilha__titulo { text-decoration: underline; text-underline-offset: 0.18em; }
+.trilha__resumo { font-size: var(--font-size-sm); color: var(--color-text-secondary); max-width: var(--measure); }
+.trilha__paginas { font-family: var(--font-family-mono); font-size: var(--font-size-xs); color: var(--color-text-secondary); white-space: nowrap; }
+
+.materiais { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-4); }
+.materiais li { margin: 0; display: grid; gap: var(--space-1); }
+.materiais__titulo { font-size: var(--font-size-lg); font-weight: var(--weight-semibold); }
+.materiais__desc { color: var(--color-text-secondary); max-width: var(--measure); }
+
+/* abertura de módulo: lista das páginas na ordem da trilha */
+.lista-paginas { list-style: none; margin: 0; padding: 0; border-top: var(--border-width) solid var(--color-border); }
+.lista-paginas li { margin: 0; border-bottom: var(--border-width) solid var(--color-border); }
+.lista-paginas .cartao-link {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-4) var(--space-2);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.lista-paginas .cartao-link:hover { background: var(--color-bg-surface); }
+.lista-paginas__material { font-size: var(--font-size-sm); color: var(--color-text-secondary); }
+.lista-paginas__titulo { font-size: var(--font-size-lg); font-weight: var(--weight-semibold); color: var(--color-accent-primary); }
+.lista-paginas__desc { font-size: var(--font-size-sm); color: var(--color-text-primary); max-width: var(--measure); }
+
+@media (max-width: 767px) {
+  .heroi h1 { font-size: var(--font-size-2xl); }
+  .trilha__item { grid-template-columns: var(--space-6) minmax(0, 1fr); }
+  .trilha__paginas { grid-column: 2; }
+}

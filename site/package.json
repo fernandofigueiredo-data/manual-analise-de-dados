@@ -1,0 +1,35 @@
+{
+  "name": "manual-analise-de-dados",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "author": "Fernando Figueiredo",
+  "description": "Manual de referência em análise de dados e data science: notebook mestre, guia de visualização, guia de relatório e manual de Machine Learning em um único site.",
+  "type": "module",
+  "scripts": {
+    "gerar": "gerador/.venv/bin/python gerador/gerar.py",
+    "gerar:tudo": "gerador/.venv/bin/python gerador/gerar.py --reexecutar",
+    "verificar": "node scripts/verificar-tokens.mjs",
+    "verificar:conteudo": "gerador/.venv/bin/python gerador/verificar_conteudo.py",
+    "dev": "astro dev",
+    "build": "node scripts/verificar-tokens.mjs && astro build && pagefind --site dist",
+    "preview": "astro preview",
+    "auditar:a11y": "node scripts/auditar-a11y.mjs",
+    "auditar:lighthouse": "node scripts/lighthouse.mjs",
+    "capturas": "node scripts/capturas.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@fontsource/inter": "5.3.0",
+    "@fontsource/jetbrains-mono": "5.3.0",
+    "astro": "7.3.5",
+    "pagefind": "1.5.2"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "lighthouse": "13.5.0",
+    "playwright": "1.63.0"
+  }
+}

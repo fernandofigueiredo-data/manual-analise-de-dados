@@ -1,0 +1,42 @@
+{
+ "slug": "comunicar/revisar-e-entregar",
+ "modulo": "comunicar",
+ "tipo": "rel",
+ "titulo": "Revisar e entregar",
+ "nav": "Revisar e entregar",
+ "sobretitulo": "Etapa 6 de 6",
+ "descricao": "Um erro de número derruba a confiança em todo o relatório. Revise com método, entregue no formato combinado e trate cada pedido de ajuste como parte do…",
+ "origem": {
+  "material": "Guia do relatório profissional",
+  "trecho": "Etapa 6 de 6"
+ },
+ "html": "<div class=\"ferramentas-guia\" data-pagefind-ignore=\"\"><a class=\"botao botao--secundario botao--pequeno\" download=\"\" href=\"/downloads/modelo_relatorio_dados.docx\"><svg aria-hidden=\"true\" class=\"icone\" fill=\"none\" focusable=\"false\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewbox=\"0 0 24 24\"><path d=\"M12 15V3\"></path><path d=\"m7 10 5 5 5-5\"></path><path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"></path></svg>Baixar modelo de relatório (.docx)</a><button class=\"botao botao--fantasma botao--pequeno\" data-imprimir=\"\" type=\"button\"><svg aria-hidden=\"true\" class=\"icone\" fill=\"none\" focusable=\"false\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewbox=\"0 0 24 24\"><path d=\"M6 9V2h12v7\"></path><path d=\"M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2\"></path><path d=\"M6 14h12v8H6z\"></path></svg>Imprimir ou salvar em PDF</button></div>\n<p class=\"lead\">Um erro de número derruba a confiança em todo o relatório. Revise com método, entregue no formato combinado e trate cada pedido de ajuste como parte do trabalho.</p>\n<div class=\"sub\" id=\"revisao\">\n<h2 data-ancora=\"revisao\">Revisão em três passadas <span class=\"selo selo--complemento\" data-pagefind-ignore=\"\">Complemento</span></h2>\n<ol>\n<li><strong>Números:</strong> confira cada número do resumo e dos achados com a saída da análise. Os totais batem? Percentuais somam 100% quando deveriam?</li>\n<li><strong>Lógica:</strong> cada ação nasce de um achado? Alguma conclusão vai além do que os dados sustentam?</li>\n<li><strong>Forma:</strong> títulos, legendas, fontes, numeração de figuras, ortografia, data e versão.</li>\n</ol>\n<p>Sempre que possível, peça a outra pessoa para ler o resumo executivo sem contexto e dizer o que entendeu.</p>\n</div>\n<div class=\"sub\" id=\"formato-canal\">\n<h2 data-ancora=\"formato-canal\">Formato e canal de entrega <span class=\"selo selo--complemento\" data-pagefind-ignore=\"\">Complemento</span></h2>\n<ul>\n<li><strong>PDF</strong> para a versão final de leitura; <strong>.docx</strong> quando o demandante precisar editar ou comentar.</li>\n<li>Nomeie o arquivo com tema, data e versão, por exemplo <code>relatorio_entregas_aaaa-mm-dd_v1.0.pdf</code>.</li>\n<li>No e-mail de envio, cole o resumo executivo no corpo da mensagem e anexe o relatório. Muitos leitores não abrem o anexo.</li>\n<li>Guarde os gráficos, as tabelas finais e o notebook ou script que reproduz a análise, para refazê-la com dados novos.</li>\n</ul>\n</div>\n<div class=\"sub\" id=\"apresentar\">\n<h2 data-ancora=\"apresentar\">Como apresentar <span class=\"selo selo--complemento\" data-pagefind-ignore=\"\">Complemento</span></h2>\n<div aria-label=\"Como apresentar Complemento\" class=\"tabela\" role=\"region\" tabindex=\"0\"><table class=\"tabela-dados\">\n<thead><tr><th scope=\"col\">Bloco</th><th class=\"n\" scope=\"col\">Tempo</th><th scope=\"col\">Conteúdo</th></tr></thead>\n<tbody>\n<tr><td>Pergunta</td><td class=\"n\">1 min</td><td>a pergunta e a decisão em jogo</td></tr>\n<tr><td>Resposta</td><td class=\"n\">2 min</td><td>a conclusão principal, em uma frase</td></tr>\n<tr><td>Achados</td><td class=\"n\">5 min</td><td>um gráfico por achado, com o título-conclusão</td></tr>\n<tr><td>Ações</td><td class=\"n\">3 min</td><td>o que fazer, quem, até quando</td></tr>\n<tr><td>Limitações</td><td class=\"n\">1 min</td><td>até onde a conclusão vale</td></tr>\n<tr><td>Perguntas</td><td class=\"n\">restante</td><td>o método fica de reserva para quem perguntar</td></tr>\n</tbody>\n</table></div>\n</div>\n<div class=\"sub\" id=\"ajustes\">\n<h2 data-ancora=\"ajustes\">Perguntas e pedidos de ajuste <span class=\"selo selo--complemento\" data-pagefind-ignore=\"\">Complemento</span></h2>\n<ul>\n<li>Responda com o dado. Se não souber, diga que vai verificar e combine uma data de retorno.</li>\n<li>Separe <strong>ajuste</strong> (mesma pergunta, outra forma ou outro recorte pequeno) de <strong>nova demanda</strong> (pergunta nova). Nova demanda pede novo briefing e novo prazo.</li>\n<li>Não mude uma conclusão por pressão; mude por evidência nova. Se o demandante discordar, mostre a limitação e proponha a análise que resolveria a dúvida.</li>\n<li>Registre cada ajuste no controle de versões do relatório (versão, data, o que mudou e quem pediu).</li>\n</ul>\n</div>\n<div class=\"check\" data-etapa=\"6\">\n<div class=\"check-head\"><h3>Lista de verificação final</h3><span class=\"check-count\"></span></div>\n<div class=\"bar\"><span></span></div>\n<ul>\n<li><label><input type=\"checkbox\"/><span>Conferi cada número do resumo e dos achados com a saída da análise.</span></label></li>\n<li><label><input type=\"checkbox\"/><span>As limitações estão claras: amostra, nulos e causalidade não comprovada.</span></label></li>\n<li><label><input type=\"checkbox\"/><span>Outra pessoa leu o resumo executivo e entendeu a mensagem.</span></label></li>\n<li><label><input type=\"checkbox\"/><span>Ortografia, numeração de figuras, data e versão estão corretas.</span></label></li>\n<li><label><input type=\"checkbox\"/><span>O arquivo está no formato combinado e nomeado com data e versão.</span></label></li>\n<li><label><input type=\"checkbox\"/><span>Tabelas e gráficos finais foram exportados e a análise pode ser executada de novo.</span></label></li>\n<li><label><input type=\"checkbox\"/><span>Perguntas e ajustes foram registrados no controle de versões.</span></label></li>\n</ul>\n</div>\n<footer class=\"rodape-guia\">\n<p>Guia genérico para fins didáticos. Todos os exemplos usam dados fictícios sobre uma empresa inventada; nenhum número se refere a pessoa, cliente ou empresa real.</p>\n</footer>\n",
+ "toc": [
+  {
+   "id": "revisao",
+   "texto": "Revisão em três passadas",
+   "nivel": 2
+  },
+  {
+   "id": "formato-canal",
+   "texto": "Formato e canal de entrega",
+   "nivel": 2
+  },
+  {
+   "id": "apresentar",
+   "texto": "Como apresentar",
+   "nivel": 2
+  },
+  {
+   "id": "ajustes",
+   "texto": "Perguntas e pedidos de ajuste",
+   "nivel": 2
+  }
+ ],
+ "recursos": [
+  "rel"
+ ],
+ "complemento": false,
+ "grupo": null,
+ "tags": null
+}

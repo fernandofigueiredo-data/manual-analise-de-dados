@@ -1,0 +1,20 @@
+{
+ "totais": {
+  "notebook": 2432,
+  "guia_visualizacao": 1019,
+  "guia_relatorio": 552,
+  "manual_ml": 6289
+ },
+ "ausentes": {
+  "notebook": 0,
+  "guia_visualizacao": 0,
+  "guia_relatorio": 0,
+  "manual_ml": 0
+ },
+ "detalhes": {
+  "notebook": [],
+  "guia_visualizacao": [],
+  "guia_relatorio": [],
+  "manual_ml": []
+ }
+}

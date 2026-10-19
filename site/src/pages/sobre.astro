@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+import navegacao from '../conteudo/navegacao.json';
+const { sobre, estatisticas, versoes_guia } = navegacao;
+const toc = [
+  { id: 'o-site', texto: 'O site', nivel: 2 },
+  { id: 'figuras', texto: 'Sobre as figuras', nivel: 2 },
+  { id: 'downloads', texto: 'Downloads', nivel: 2 },
+  { id: 'notebooks-modelo', texto: 'Notebooks modelo de Machine Learning', nivel: 3 },
+  { id: 'materiais', texto: 'Materiais de origem', nivel: 2 },
+  { id: 'fontes', texto: 'Fontes tipográficas', nivel: 2 },
+];
+---
+<Base titulo="Sobre o site e os materiais" descricao="Como o manual foi montado a partir do notebook mestre e dos dois guias, como as figuras foram geradas, downloads e créditos." slugAtual="sobre" toc={toc}>
+  <nav class="migalhas" aria-label="Você está em">
+    <ol><li><a href="/">Início</a></li><li><span aria-current="page">Sobre</span></li></ol>
+  </nav>
+  <article data-pagefind-body>
+    <header class="cabeca-pagina">
+      <h1 data-pagefind-meta="title">Sobre o site e os materiais</h1>
+    </header>
+
+    <h2 id="o-site">O site</h2>
+    <p>Este manual reúne quatro materiais do mesmo autor em uma trilha única: o <strong>notebook mestre de análise de dados</strong>, que dá a ordem da trilha, o <strong>guia de matplotlib e seaborn com storytelling de dados</strong>, o <strong>guia do relatório profissional em dados</strong> e o <strong>manual de Machine Learning</strong>, com a skill de decisão e a auditoria técnica. O conteúdo técnico é o dos materiais originais; o site acrescenta navegação, busca, modo claro e escuro e links entre as seções.</p>
+    <p>O conteúdo é gerado por um script Python que executa o notebook e os exemplos do guia de visualização e converte tudo em páginas. São {estatisticas.paginas} páginas de conteúdo, {estatisticas.codigos} blocos de código e {estatisticas.figuras} gráficos.</p>
+
+    <h2 id="figuras">Sobre as figuras</h2>
+    <aside class="callout callout--nota">
+      <p class="callout__titulo"><span>Nota do site</span></p>
+      <div class="callout__corpo">
+        <p>As figuras do notebook mestre foram geradas executando o código exibido em cada página, com o tema visual do site aplicado antes dos gráficos (fundo escuro, paleta, fonte e cores de texto e grade). Cores fixadas no código, como <code>'steelblue'</code> ou <code>cmap='Blues'</code>, foram trocadas pelas cores equivalentes do tema só na execução, e as barras de erro ganharam uma cor clara para aparecer no fundo escuro. Ao rodar o código no seu ambiente, você verá as cores escritas no código.</p>
+        <p>As figuras do guia de matplotlib e seaborn seguem o mesmo princípio: são geradas pelo código exibido ao lado delas, com o tema do site aplicado na execução. As cores que o guia fixa no código passam para as equivalentes do design system: o cinza de contexto fica mais escuro, o azul de destaque vira ciano e o laranja de alerta vira âmbar; o fundo branco vira o grafite do site. As amostras de cor no texto do guia mostram as cores usadas nas figuras.</p>
+      </div>
+    </aside>
+
+    <h2 id="downloads">Downloads</h2>
+    <ul>
+      <li><a href="/downloads/modelo_relatorio_dados.docx" download>Modelo de relatório (.docx)</a>: modelo em branco com a mesma estrutura de seções do guia do relatório.</li>
+      <li><a href="/downloads/Notebook_Mestre_Analise_de_Dados.ipynb" download>Notebook mestre (.ipynb)</a>: o notebook original, sem saídas, pronto para executar com o dataset sintético.</li>
+      <li><a href="/downloads/skill_decisao_ml.md" download>Skill de decisão de ML (skill_decisao_ml.md)</a>: para instalar em um agente, como descrito em <a href="/modelar/manual-de-machine-learning/#comousar-agente">Como usar o manual</a>.</li>
+      <li><a href="/downloads/auditoria_ml.md" download>Auditoria técnica do manual de ML (auditoria_ml.md)</a>.</li>
+    </ul>
+    <h3 id="notebooks-modelo">Notebooks modelo de Machine Learning</h3>
+    <p>Templates genéricos (.ipynb) para aplicar a outros datasets: cada um foi revisado, corrigido e generalizado a partir de um notebook de estudo e está associado ao cartão do modelo correspondente no manual. Todos rodam de ponta a ponta com dados sintéticos e pedem só a edição de uma célula de configuração.</p>
+    <ul>
+      {(sobre.notebooks_ml ?? []).map((n) => (
+        <li><a href={`/downloads/${n.arquivo}`} download>{n.titulo} ({n.arquivo})</a>: {n.descricao} Cartão: <a href={n.url}>{n.modelo}</a>.</li>
+      ))}
+    </ul>
+
+    <h2 id="materiais">Materiais de origem</h2>
+    <p>Os arquivos de apresentação de cada pacote, como foram entregues. Os links para arquivos citados neles se referem aos pacotes originais.</p>
+    <Fragment set:html={sobre.readme_viz} />
+    <p class="muted small">Versões usadas para gerar as figuras deste site: {versoes_guia}.</p>
+    <Fragment set:html={sobre.readme_rel} />
+    <Fragment set:html={sobre.readme_ml} />
+
+    <h2 id="fontes">Fontes tipográficas</h2>
+    <p>Inter e JetBrains Mono (SIL Open Font License), servidas pelo próprio site a partir dos pacotes <code>@fontsource</code>. Licenças em <a href="/fonts/OFL-Inter.txt">OFL-Inter.txt</a> e <a href="/fonts/OFL-JetBrainsMono.txt">OFL-JetBrainsMono.txt</a>.</p>
+  </article>
+</Base>

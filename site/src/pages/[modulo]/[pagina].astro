@@ -1,0 +1,62 @@
+---
+import Base from '../../layouts/Base.astro';
+import ScriptGuiaViz from '../../components/ScriptGuiaViz.astro';
+import ScriptRelatorio from '../../components/ScriptRelatorio.astro';
+import ScriptML from '../../components/ScriptML.astro';
+import ScriptDiagnostico from '../../components/ScriptDiagnostico.astro';
+import { paginas, trilha, vizinhos, modulo, url } from '../../lib/dados.js';
+
+export function getStaticPaths() {
+  return trilha.map((slug) => {
+    const [mod, pagina] = slug.split('/');
+    return { params: { modulo: mod, pagina }, props: { slug } };
+  });
+}
+const { slug } = Astro.props;
+const p = paginas[slug];
+const m = modulo(p.modulo);
+const { anterior, proxima } = vizinhos(slug);
+const viz = p.recursos?.includes('viz');
+const rel = p.recursos?.includes('rel');
+const ml = p.recursos?.includes('ml');
+const diag = p.recursos?.includes('diagnostico');
+---
+<Base titulo={p.titulo} descricao={p.descricao} slugAtual={slug} toc={p.toc}>
+  <nav class="migalhas" aria-label="Você está em">
+    <ol>
+      <li><a href="/">Início</a></li>
+      <li><a href={`/${m.id}/`}>{m.numero}. {m.titulo}</a></li>
+      <li><span aria-current="page">{p.nav}</span></li>
+    </ol>
+  </nav>
+  <article data-pagefind-body>
+    <header class="cabeca-pagina">
+      <h1 data-pagefind-meta="title">{p.titulo}</h1>
+      <p class="meta-pagina">
+        <span>{p.sobretitulo}</span>
+        {p.complemento && <span class="selo selo--complemento">Complemento</span>}
+        {p.tags?.map((t) => <span class="selo tag-cat">{t}</span>)}
+      </p>
+    </header>
+    <div class="prosa" set:html={p.html} />
+  </article>
+  <p class="origem">Origem: {p.origem.material}, {p.origem.trecho}.</p>
+  <nav class="paginacao" aria-label="Anterior e próxima na trilha">
+    {anterior && (
+      <a href={url(anterior.slug)} rel="prev">
+        <span class="paginacao__rotulo">Anterior</span>
+        <span class="paginacao__titulo">{anterior.nav}</span>
+      </a>
+    )}
+    {proxima && (
+      <a class="paginacao__proxima" href={url(proxima.slug)} rel="next">
+        <span class="paginacao__rotulo">Próxima</span>
+        <span class="paginacao__titulo">{proxima.nav}</span>
+      </a>
+    )}
+  </nav>
+  {viz && <ScriptGuiaViz />}
+  {rel && <ScriptRelatorio />}
+  {ml && <ScriptML />}
+  {diag && <ScriptDiagnostico />}
+</Base>

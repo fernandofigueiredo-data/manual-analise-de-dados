@@ -1,0 +1,161 @@
+---
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/layout.css';
+import '../styles/componentes.css';
+import '../styles/guias.css';
+import '../styles/inicio.css';
+import '../styles/ml.css';
+import Icone from '../components/Icone.astro';
+import { modulos, paginas, url } from '../lib/dados.js';
+
+interface Item { id: string; texto: string; nivel: number }
+interface Props {
+  titulo: string;
+  tituloCompleto?: string;
+  descricao: string;
+  slugAtual?: string;
+  toc?: Item[];
+  semToc?: boolean;
+}
+const { titulo, tituloCompleto, descricao, slugAtual = '', toc = [], semToc = false } = Astro.props;
+const NOME = 'Análise de Dados · Manual de referência';
+const tituloDoc = tituloCompleto ?? `${titulo} | ${NOME}`;
+const moduloAtual = slugAtual.split('/')[0];
+const canonico = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : null;
+const temToc = !semToc;
+const itensToc = toc.length ? toc : [{ id: 'conteudo', texto: titulo, nivel: 2 }];
+---
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{tituloDoc}</title>
+  <meta name="description" content={descricao} />
+  {canonico && <link rel="canonical" href={canonico} />}
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content={tituloDoc} />
+  <meta property="og:description" content={descricao} />
+  <meta name="theme-color" content="#101522" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/inter-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <script is:inline>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('tema'); } catch (e) {}
+      if (t !== 'dark' && t !== 'light') t = 'dark'; // dark-first: o claro é um sistema derivado, escolhido no botão
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="cabecalho">
+    <button type="button" class="botao-icone abre-menu" aria-expanded="false" aria-controls="lateral" aria-label="Abrir menu de navegação">
+      <Icone nome="menu" />
+    </button>
+    <a class="marca" href="/">
+      <span class="marca__icone"><Icone nome="grafico" /></span>
+      <span>Análise de Dados<span class="marca__sub"> · Manual</span></span>
+    </a>
+    <div class="cabecalho__acoes">
+      <button type="button" class="botao-busca" data-abre-busca aria-haspopup="dialog" aria-label="Buscar no site">
+        <Icone nome="busca" /><span class="botao-busca__texto">Buscar</span><kbd>/</kbd>
+      </button>
+      <button type="button" class="botao-icone" data-tema aria-label="Alternar tema claro e escuro">
+        <span class="tema-escuro"><Icone nome="lua" /></span>
+        <span class="tema-claro"><Icone nome="sol" /></span>
+      </button>
+    </div>
+  </header>
+
+  <div class={`pagina${temToc ? '' : ' pagina--sem-toc'}`}>
+    <aside id="lateral" class="lateral" aria-label="Navegação do manual">
+      <nav aria-label="Trilha de aprendizado">
+        <ul class="nav-modulos">
+          {modulos.map((m) => (
+            <li class="nav-modulo">
+              <details open={moduloAtual === m.id}>
+                <summary>
+                  <span class="nav-modulo__num">{m.numero}</span>
+                  <span>{m.titulo}</span>
+                  <span class="nav-modulo__seta"><Icone nome="seta" /></span>
+                </summary>
+                <ul>
+                  <li><a class="nav-link nav-modulo__inicio" href={`/${m.id}/`} aria-current={slugAtual === m.id ? 'page' : undefined}>Visão geral do módulo</a></li>
+                  {m.paginas.map((s, i) => (
+                    <>
+                      {paginas[s].grupo && paginas[s].grupo !== paginas[m.paginas[i - 1]]?.grupo && (
+                        <li class="nav-grupo">{paginas[s].grupo}</li>
+                      )}
+                      <li><a class="nav-link" href={url(s)} aria-current={slugAtual === s ? 'page' : undefined}>{paginas[s].nav}</a></li>
+                    </>
+                  ))}
+                </ul>
+              </details>
+            </li>
+          ))}
+        </ul>
+        <div class="nav-extra">
+          <a class="nav-link" href="/sobre/" aria-current={slugAtual === 'sobre' ? 'page' : undefined}>Sobre o site e os materiais</a>
+        </div>
+      </nav>
+    </aside>
+    <div class="veu" hidden></div>
+
+    <main id="conteudo" class="conteudo" tabindex="-1">
+      <div class="conteudo__coluna">
+        {temToc && (
+          <details class="toc-movel">
+            <summary>Nesta página</summary>
+            <ol>
+              {itensToc.map((t) => <li class={`toc__n${t.nivel}`}><a href={`#${t.id}`}>{t.texto}</a></li>)}
+            </ol>
+          </details>
+        )}
+        <slot />
+      </div>
+    </main>
+
+    {temToc && (
+      <nav class="toc" aria-label="Nesta página">
+        <p class="toc__titulo">Nesta página</p>
+        <ol>
+          {itensToc.map((t) => <li class={`toc__n${t.nivel}`}><a href={`#${t.id}`} data-toc={t.id}>{t.texto}</a></li>)}
+        </ol>
+      </nav>
+    )}
+  </div>
+
+  <footer class="rodape">
+    <div class="rodape__interno">
+      <p>Manual de referência em análise de dados: notebook mestre, guia de visualização, guia de relatório e manual de Machine Learning.</p>
+      <p><a href="/sobre/">Sobre, créditos e downloads</a></p>
+    </div>
+  </footer>
+
+  <dialog class="dialogo-busca" id="dialogo-busca" aria-labelledby="busca-titulo">
+    <div class="busca__topo">
+      <label class="campo">
+        <span class="campo__rotulo" id="busca-titulo">Buscar no manual</span>
+        <input type="search" class="campo__entrada" id="busca-entrada" placeholder="Ex.: qui-quadrado, merge, título" autocomplete="off" aria-controls="busca-resultados" />
+      </label>
+      <button type="button" class="botao-icone" data-fecha-busca aria-label="Fechar busca"><Icone nome="fechar" /></button>
+    </div>
+    <p class="busca__estado" id="busca-estado" aria-live="polite">Digite pelo menos duas letras.</p>
+    <ul class="busca__resultados" id="busca-resultados" aria-label="Resultados da busca"></ul>
+  </dialog>
+
+  <dialog class="dialogo-figura" id="dialogo-figura" aria-label="Imagem ampliada">
+    <button type="button" class="botao-icone dialogo-figura__fechar" data-fecha-figura aria-label="Fechar imagem ampliada"><Icone nome="fechar" /></button>
+  </dialog>
+
+  <script>
+    import '../scripts/base.js';
+  </script>
+</body>
+</html>

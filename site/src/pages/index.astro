@@ -1,0 +1,86 @@
+---
+import Base from '../layouts/Base.astro';
+import { abertura, indice, estatisticas, modulos } from '../lib/dados.js';
+
+const descricao = 'Manual de referência em análise de dados, em português: do primeiro contato com o dataset ao relatório entregue, com código, saídas, gráficos e modelos para copiar.';
+const toc = [
+  { id: 'como-funciona', texto: 'A trilha', nivel: 2 },
+  { id: 'indice', texto: 'Índice', nivel: 2 },
+  { id: 'materiais', texto: 'Os quatro materiais', nivel: 2 },
+];
+const materiais = [
+  { url: '/comecar/como-usar/', titulo: 'Notebook mestre de análise de dados', desc: 'A espinha dorsal da trilha: seções 0 a 15, com código, saídas e gráficos.' },
+  { url: '/visualizar/guia-matplotlib-seaborn/', titulo: 'Guia matplotlib e seaborn', desc: 'Fundamentos, catálogo de gráficos e storytelling com dados, no módulo Visualizar.' },
+  { url: '/comecar/relatorio-profissional/', titulo: 'Guia do relatório profissional', desc: 'Do pedido à entrega, em seis etapas distribuídas ao longo da trilha.' },
+  { url: '/modelar/manual-de-machine-learning/', titulo: 'Manual de Machine Learning', desc: '43 modelos, decisão, validação e diagnóstico de dataset no navegador, no módulo Machine Learning.' },
+];
+---
+<Base titulo="Início" tituloCompleto="Análise de Dados · Manual de referência em português" descricao={descricao} toc={toc}>
+  <article data-pagefind-body>
+    <section class="heroi" aria-labelledby="titulo-inicio">
+      <h1 id="titulo-inicio" data-pagefind-meta="title">{abertura.titulo}</h1>
+      <p class="heroi__sub">{abertura.subtitulo}</p>
+      <p class="heroi__citacao" set:html={abertura.citacao_html} />
+      <div class="heroi__acoes">
+        <a class="botao botao--cta" href="/comecar/como-usar/">Começar pela trilha</a>
+        <a class="botao botao--secundario" href="#indice">Ver o índice</a>
+      </div>
+      <p class="heroi__fatos">
+        {modulos.length} módulos · {estatisticas.paginas} páginas · {estatisticas.codigos} blocos de código · {estatisticas.figuras} gráficos gerados pelo código
+      </p>
+    </section>
+
+    <section class="secao-inicio" aria-labelledby="como-funciona">
+      <h2 id="como-funciona">A trilha</h2>
+      <ol class="trilha">
+        {modulos.map((m) => (
+          <li>
+            <a class="trilha__item" href={`/${m.id}/`}>
+              <span class="trilha__num" aria-hidden="true">{m.numero}</span>
+              <span class="trilha__texto">
+                <span class="trilha__titulo">{m.titulo}</span>
+                <span class="trilha__resumo">{m.resumo}</span>
+              </span>
+              <span class="trilha__paginas">{m.paginas.length} páginas</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="secao-inicio" aria-labelledby="indice">
+      <h2 id="indice">Índice</h2>
+      <div class="tabela" role="region" tabindex="0" aria-label="Índice do notebook mestre">
+        <table class="tabela-dados">
+          <thead><tr><th scope="col">#</th><th scope="col">Seção</th><th scope="col">Pergunta que responde</th></tr></thead>
+          <tbody>
+            {indice.map((l) => (
+              <tr>
+                <td class="num">{l.numero}</td>
+                <td>{l.url ? <a href={l.url}>{l.secao}</a> : l.secao}</td>
+                <td>{l.pergunta}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="secao-inicio" aria-labelledby="materiais">
+      <h2 id="materiais">Os quatro materiais</h2>
+      <ul class="materiais">
+        {materiais.map((x) => (
+          <li>
+            <a class="materiais__titulo" href={x.url}>{x.titulo}</a>
+            <span class="materiais__desc">{x.desc}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </article>
+</Base>
+
+<style>
+  /* único glow permitido pelo design system (seção 8): o ponto principal da página inicial */
+  .botao--cta { box-shadow: var(--glow-cta); }
+</style>

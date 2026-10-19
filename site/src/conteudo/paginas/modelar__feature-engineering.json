@@ -1,0 +1,64 @@
+{
+ "slug": "modelar/feature-engineering",
+ "modulo": "modelar",
+ "tipo": "ml",
+ "titulo": "10. Feature Engineering e pré-processamento",
+ "nav": "10. Feature Engineering",
+ "sobretitulo": "Manual de Machine Learning · Parte III — Treinamento",
+ "descricao": "Quem exige escala e quem não exige",
+ "origem": {
+  "material": "Manual de Machine Learning",
+  "trecho": "seção 10"
+ },
+ "html": "\n<h2 id=\"s10-1\">10.1 Escalonamento</h2>\n<div aria-label=\"10.1 Escalonamento\" class=\"tabela\" role=\"region\" tabindex=\"0\"><table class=\"\">\n<thead><tr><th scope=\"col\">Transformador</th><th scope=\"col\">O que faz</th><th scope=\"col\">Use quando</th></tr></thead>\n<tbody>\n<tr><td><code>StandardScaler</code></td><td>Média 0, desvio 1</td><td>Padrão para modelos sensíveis a escala</td></tr>\n<tr><td><code>MinMaxScaler</code></td><td>Comprime para [0, 1]</td><td>Limites conhecidos; redes neurais com ativação limitada</td></tr>\n<tr><td><code>RobustScaler</code></td><td>Usa mediana e IQR</td><td>Presença relevante de outliers</td></tr>\n<tr><td><code>PowerTransformer</code></td><td>Yeo-Johnson / Box-Cox</td><td>Assimetria forte; aproximar de normalidade</td></tr>\n</tbody>\n</table></div>\n<aside class=\"callout callout--sucesso\"><p class=\"callout__titulo\"><svg aria-hidden=\"true\" class=\"icone\" fill=\"none\" focusable=\"false\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewbox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"m9 12 2 2 4-4\"></path></svg><span>Quem exige escala e quem não exige</span></p><div class=\"callout__corpo\"><b>Exigem:</b> lineares regularizados, SVM, KNN, K-Means, PCA, redes neurais. <b>Não exigem:</b> árvores de decisão, Random Forest, Gradient Boosting, XGBoost, LightGBM, CatBoost — cortes por threshold são invariantes a transformações monotônicas.</div></aside>\n<h2 id=\"s10-2\">10.2 Codificação de categóricas</h2>\n<div aria-label=\"10.2 Codificação de categóricas\" class=\"tabela\" role=\"region\" tabindex=\"0\"><table class=\"\">\n<thead><tr><th scope=\"col\">Encoder</th><th scope=\"col\">Ideia</th><th scope=\"col\">Cuidado</th></tr></thead>\n<tbody>\n<tr><td><code>OneHotEncoder</code></td><td>Uma coluna binária por categoria</td><td>Explode com alta cardinalidade. Padrão <code>sparse_output=True</code> devolve matriz esparsa (o antigo <code>sparse</code> foi renomeado na 1.2)</td></tr>\n<tr><td><code>OrdinalEncoder</code></td><td>Inteiro por categoria</td><td>Só quando há ordem real, ou para modelos de árvore</td></tr>\n<tr><td><code>TargetEncoder</code></td><td>Substitui a categoria por estatística suavizada do alvo</td><td>Alta cardinalidade; <b>risco de leakage</b> — use dentro do pipeline, com validação cruzada interna</td></tr>\n<tr><td>Nativo do modelo</td><td>CatBoost (<code>cat_features</code>), LightGBM, XGBoost (<code>enable_categorical</code>), <code>HistGradientBoosting*</code></td><td>Geralmente a melhor opção para alta cardinalidade em boosting</td></tr>\n</tbody>\n</table></div>\n<div class=\"codigo\" data-lang=\"python\"><div class=\"codigo__barra\" data-pagefind-ignore=\"\"><span class=\"codigo__lang\">python</span><button class=\"codigo__copiar\" data-copiar=\"\" type=\"button\">Copiar</button></div><pre aria-label=\"Código python\" class=\"codigo__pre\" tabindex=\"0\"><code><span class=\"ln\" data-n=\"1\"><span class=\"tk-kw\">from</span> sklearn.preprocessing <span class=\"tk-kw\">import</span> OneHotEncoder</span>\n<span class=\"ln\" data-n=\"2\">ohe = <span class=\"tk-fn\">OneHotEncoder</span>(handle_unknown=<span class=\"tk-str\">\"</span><span class=\"tk-str\">infrequent_if_exist</span><span class=\"tk-str\">\"</span>, sparse_output=<span class=\"tk-kw\">False</span>)</span>\n<span class=\"ln\" data-n=\"3\"><span class=\"tk-com\"># alternativa: ohe.set_output(transform=\"pandas\") para receber DataFrame com nomes</span></span></code></pre></div>\n<h2 id=\"s10-3\">10.3 Valores ausentes e outliers</h2>\n<ul>\n<li><b>Diagnostique antes de imputar:</b> ausência aleatória, ausência com padrão e ausência informativa exigem tratamentos diferentes — às vezes a melhor feature é o próprio indicador de ausência (<code>add_indicator=True</code>).</li>\n<li><code>SimpleImputer</code> (média/mediana/moda/constante), <code>KNNImputer</code> (vizinhos), <code>IterativeImputer</code> (modelagem por regressão).</li>\n<li><b>HistGradientBoosting, XGBoost, LightGBM e CatBoost tratam NaN nativamente</b> — imputar pode inclusive piorar.</li>\n<li>Outliers: investigue origem antes de remover. Alternativas a excluir: <code>RobustScaler</code>, winsorização, transformação log, perda robusta (Huber).</li>\n</ul>\n<h2 id=\"s10-4\">10.4 Criação de features</h2>\n<div class=\"grid2\">\n<div class=\"box\"><h3 id=\"transformacoes\">Transformações</h3><ul><li>log / raiz para assimetria positiva</li><li>Yeo-Johnson via <code>PowerTransformer</code></li><li>binning para relações em degrau</li><li>razões e diferenças com significado de domínio</li></ul></div>\n<div class=\"box\"><h3 id=\"agregacoes-e-interacoes\">Agregações e interações</h3><ul><li>group-by por entidade (média, contagem, desvio)</li><li>produtos e cruzamentos entre features</li><li><code>PolynomialFeatures</code> para não linearidade em modelos lineares</li></ul></div>\n<div class=\"box\"><h3 id=\"temporais\">Temporais</h3><ul><li>lags (t−1, t−7, t−28) e janelas móveis</li><li>componentes de data: dia da semana, mês, feriado</li><li>codificação cíclica: sen/cos de hora e mês</li><li><b>Toda janela deve olhar só para o passado</b></li></ul></div>\n<div class=\"box\"><h3 id=\"selecao\">Seleção</h3><ul><li>Filtro: variância, correlação, teste estatístico</li><li>Wrapper: <code>RFE</code>, forward/backward</li><li>Embutida: L1, importância de árvores, <code>SelectFromModel</code></li><li>Validação: <code>permutation_importance</code> (mais confiável que importância por impureza)</li></ul></div>\n</div>\n<aside class=\"callout callout--erro\"><p class=\"callout__titulo\"><svg aria-hidden=\"true\" class=\"icone\" fill=\"none\" focusable=\"false\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewbox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"m15 9-6 6\"></path><path d=\"m9 9 6 6\"></path></svg><span>Mito: “quanto mais features, melhor”</span></p><div class=\"callout__corpo\">Features irrelevantes adicionam ruído, aumentam variância, pioram a maldição da dimensionalidade e encarecem manutenção. Mais features só ajudam se carregarem sinal novo.</div></aside>\n",
+ "toc": [
+  {
+   "id": "s10-1",
+   "texto": "10.1 Escalonamento",
+   "nivel": 2
+  },
+  {
+   "id": "s10-2",
+   "texto": "10.2 Codificação de categóricas",
+   "nivel": 2
+  },
+  {
+   "id": "s10-3",
+   "texto": "10.3 Valores ausentes e outliers",
+   "nivel": 2
+  },
+  {
+   "id": "s10-4",
+   "texto": "10.4 Criação de features",
+   "nivel": 2
+  },
+  {
+   "id": "transformacoes",
+   "texto": "Transformações",
+   "nivel": 3
+  },
+  {
+   "id": "agregacoes-e-interacoes",
+   "texto": "Agregações e interações",
+   "nivel": 3
+  },
+  {
+   "id": "temporais",
+   "texto": "Temporais",
+   "nivel": 3
+  },
+  {
+   "id": "selecao",
+   "texto": "Seleção",
+   "nivel": 3
+  }
+ ],
+ "recursos": [
+  "ml"
+ ],
+ "complemento": null,
+ "grupo": "Parte III — Treinamento",
+ "tags": [
+  "Pré-processamento"
+ ]
+}

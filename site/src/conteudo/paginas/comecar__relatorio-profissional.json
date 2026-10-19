@@ -1,0 +1,32 @@
+{
+ "slug": "comecar/relatorio-profissional",
+ "modulo": "comecar",
+ "tipo": "rel",
+ "titulo": "Como montar um relatório de dados profissional e entregá-lo a quem pediu",
+ "nav": "O relatório profissional",
+ "sobretitulo": "Guia e manual",
+ "descricao": "Um relatório profissional começa pelo que o leitor precisa decidir e deixa o detalhe técnico para o final. Este guia percorre o trabalho inteiro, do pedido à…",
+ "origem": {
+  "material": "Guia do relatório profissional",
+  "trecho": "Como usar este guia"
+ },
+ "html": "<div class=\"ferramentas-guia\" data-pagefind-ignore=\"\"><a class=\"botao botao--secundario botao--pequeno\" download=\"\" href=\"/downloads/modelo_relatorio_dados.docx\"><svg aria-hidden=\"true\" class=\"icone\" fill=\"none\" focusable=\"false\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewbox=\"0 0 24 24\"><path d=\"M12 15V3\"></path><path d=\"m7 10 5 5 5-5\"></path><path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"></path></svg>Baixar modelo de relatório (.docx)</a><button class=\"botao botao--fantasma botao--pequeno\" data-imprimir=\"\" type=\"button\"><svg aria-hidden=\"true\" class=\"icone\" fill=\"none\" focusable=\"false\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewbox=\"0 0 24 24\"><path d=\"M6 9V2h12v7\"></path><path d=\"M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2\"></path><path d=\"M6 14h12v8H6z\"></path></svg>Imprimir ou salvar em PDF</button></div>\n<p class=\"lead\">Um relatório profissional começa pelo que o leitor precisa decidir e deixa o detalhe técnico para o final. Este guia percorre o trabalho inteiro, do pedido à entrega, com perguntas, listas de verificação, modelos de texto e um relatório de exemplo.</p>\n<div class=\"dl\">\n<p><strong>Modelo em branco para preencher.</strong> Mesma estrutura de seções deste guia, com instruções em cada parte, capa, sumário automático, quadro de premissas e limitações e anexos.</p>\n<a class=\"botao botao--primario\" download=\"\" href=\"/downloads/modelo_relatorio_dados.docx\">\n<svg aria-hidden=\"true\" class=\"icone\" fill=\"none\" focusable=\"false\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewbox=\"0 0 24 24\"><path d=\"M12 15V3\"></path><path d=\"m7 10 5 5 5-5\"></path><path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"></path></svg>Baixar modelo de relatório (.docx)</a>\n</div>\n<div class=\"sub\" id=\"fluxo\">\n<h2 data-ancora=\"fluxo\">As seis etapas</h2>\n<ol class=\"flow\">\n<li><a href=\"/comecar/entender-a-demanda/\"><b>1</b>Entender a demanda</a></li>\n<li><a href=\"/preparar/preparar-os-dados-no-relatorio/\"><b>2</b>Preparar os dados</a></li>\n<li><a href=\"/inferir/analisar-no-relatorio/\"><b>3</b>Analisar</a></li>\n<li><a href=\"/comunicar/estruturar-o-relatorio/\"><b>4</b>Estruturar o relatório</a></li>\n<li><a href=\"/comunicar/comunicar-resultados/\"><b>5</b>Comunicar</a></li>\n<li><a href=\"/comunicar/revisar-e-entregar/\"><b>6</b>Revisar e entregar</a></li>\n</ol>\n<p>O trabalho não é linear. Um gráfico feito na análise pode revelar um problema que obriga a voltar à limpeza, e uma pergunta do demandante na entrega pode exigir uma análise nova. Volte às etapas anteriores sempre que precisar e registre cada decisão: ela vai alimentar o detalhamento técnico e o quadro de limitações.</p>\n</div>\n<div class=\"sub\" id=\"como-usar\">\n<h2 data-ancora=\"como-usar\">Como usar</h2>\n<ul>\n<li><strong>Navegue</strong> pelo menu lateral ou busque um termo, por exemplo <em>limitações</em>, <em>qui-quadrado</em> ou <em>título</em>.</li>\n<li><strong>Marque</strong> as listas de verificação ao fim de cada etapa. O contador mostra o progresso por etapa e no total.</li>\n<li><strong>Preencha</strong> o questionário de briefing da etapa 1 e copie o resumo para enviar ao demandante.</li>\n<li><strong>Compare</strong> as versões fraca e forte dos exemplos para ver a diferença na prática.</li>\n<li><strong>Copie</strong> os modelos de texto de cada seção do relatório na etapa 4.</li>\n</ul>\n<aside class=\"callout callout--nota\"><p class=\"callout__titulo callout__titulo--so-icone\"><svg aria-hidden=\"true\" class=\"icone\" fill=\"none\" focusable=\"false\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewbox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M12 16v-4\"></path><path d=\"M12 8h.01\"></path></svg><span class=\"sr-only\">Nota</span></p><div class=\"callout__corpo\">\n<p><strong>Sobre os dados e o conteúdo.</strong> Todos os exemplos usam <strong>dados fictícios</strong>, criados para este guia, sobre uma empresa inventada (Empresa Exemplo). Nenhum número representa pessoa, cliente ou empresa real. O método segue o material de estudo de origem (roteiro de análise, notebook de relatório e modelo de relatório). Trechos marcados com <span class=\"selo selo--complemento\" data-pagefind-ignore=\"\">Complemento</span> foram acrescentados para cobrir etapas em que esse material não entra em detalhe, como o briefing e a entrega.</p>\n<p>As marcações e os campos preenchidos ficam só nesta aba: ao recarregar a página, tudo volta ao início.</p>\n</div></aside>\n</div>\n",
+ "toc": [
+  {
+   "id": "fluxo",
+   "texto": "As seis etapas",
+   "nivel": 2
+  },
+  {
+   "id": "como-usar",
+   "texto": "Como usar",
+   "nivel": 2
+  }
+ ],
+ "recursos": [
+  "rel"
+ ],
+ "complemento": false,
+ "grupo": null,
+ "tags": null
+}

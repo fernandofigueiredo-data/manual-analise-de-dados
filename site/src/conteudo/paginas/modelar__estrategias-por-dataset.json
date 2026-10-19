@@ -1,0 +1,21 @@
+{
+ "slug": "modelar/estrategias-por-dataset",
+ "modulo": "modelar",
+ "tipo": "ml",
+ "titulo": "13. Estratégias por tipo de dataset",
+ "nav": "13. Estratégias por dataset",
+ "sobretitulo": "Manual de Machine Learning · Parte IV — Decisão",
+ "descricao": "None",
+ "origem": {
+  "material": "Manual de Machine Learning",
+  "trecho": "seção 13"
+ },
+ "html": "\n<div aria-label=\"A coluna de interpretabilidade é coerente com a escala numérica da §5.1 da skill (Alta ≥ 0,75; Média de 0,45 a 0,74; Bai\" class=\"tabela\" role=\"region\" tabindex=\"0\"><table class=\"\">\n<thead><tr><th scope=\"col\">Característica do dataset</th><th scope=\"col\">Escolha típica</th><th scope=\"col\">Ajuste obrigatório</th></tr></thead>\n<tbody>\n<tr><td>Pequeno (&lt; 1.000 linhas)</td><td>Linear/logístico regularizado, Naive Bayes</td><td>Validação cruzada repetida; regularização forte; nada de Deep Learning</td></tr>\n<tr><td>Médio (~10.000 linhas)</td><td>Random Forest, boosting</td><td>Early stopping e tuning moderado</td></tr>\n<tr><td>Grande (milhões)</td><td>LightGBM, modelos lineares com SGD, Deep Learning quando o sinal é complexo</td><td>Amostragem para prototipar; atenção a custo</td></tr>\n<tr><td>Tabular</td><td>Boosting e árvores</td><td>Categóricas nativas; NaN nativo</td></tr>\n<tr><td>Muitas categóricas de alta cardinalidade</td><td>CatBoost; <code>TargetEncoder</code></td><td>Evitar One-Hot explosivo; evitar leakage no encoder</td></tr>\n<tr><td>Misto (numérico + categórico)</td><td><code>HistGradientBoosting</code>, CatBoost</td><td><code>ColumnTransformer</code> disciplinado</td></tr>\n<tr><td>Séries temporais</td><td>Features de lag/janela + boosting; modelos temporais dedicados</td><td><code>TimeSeriesSplit</code>; nada de embaralhar</td></tr>\n<tr><td>Texto</td><td>TF-IDF + linear/Naive Bayes; Transformers</td><td>Vocabulário, stopwords, n-gramas, esparsidade</td></tr>\n<tr><td>Imagens</td><td>CNN, transfer learning</td><td>Augmentation; GPU</td></tr>\n<tr><td>Alta dimensionalidade (p ≫ n)</td><td>Linear regularizado, PCA + modelo</td><td>Regularização forte; cuidado com distância (KNN degrada)</td></tr>\n<tr><td>Altamente desbalanceado</td><td>Boosting + PR-AUC</td><td><code>class_weight</code>, <code>scale_pos_weight</code>, reamostragem, threshold</td></tr>\n<tr><td>Muitos outliers</td><td><code>RobustScaler</code>, perdas robustas, árvores</td><td>Investigar origem antes de remover</td></tr>\n<tr><td>Relação genuinamente linear</td><td>Modelos lineares</td><td>Verificar resíduos e multicolinearidade</td></tr>\n<tr><td>Dados agrupados (cliente, loja, paciente)</td><td>Qualquer modelo</td><td><code>GroupKFold</code> obrigatório</td></tr>\n<tr><td>Matriz usuário × item de interações</td><td>Popularidade, colaborativa, fatoração, híbrido</td><td>Split temporal; métricas @k; excluir o já consumido, salvo em domínios de recompra</td></tr>\n<tr><td>Catálogo com descrição rica e itens novos frequentes</td><td>Filtragem baseada em conteúdo, híbrido</td><td>Diversidade como métrica explícita</td></tr>\n<tr><td>Log de (contexto, ação, recompensa)</td><td>Bandits contextuais, avaliação off-policy</td><td>Registrar a probabilidade da ação exibida</td></tr>\n<tr><td>Ambiente interativo ou simulador</td><td>Q-learning, DQN, PPO</td><td>Várias sementes; avaliação sem exploração</td></tr>\n<tr><td>Base transacional (cestas, sessões)</td><td>FP-Growth, Apriori</td><td>Suporte mínimo; remover itens onipresentes; validar no período seguinte</td></tr>\n<tr><td>Poucos rótulos, muitos dados sem rótulo</td><td>Self-Training, Co-Training, Label Spreading</td><td>Holdout rotulado separado desde o início</td></tr>\n<tr><td>Vários alvos numéricos</td><td>Regressão multivariada, <code>MultiOutputRegressor</code></td><td>Avaliar cada alvo e o conjunto</td></tr>\n<tr><td>Sinais de sensores misturados</td><td>ICA</td><td>Padronizar; conferir a estabilidade entre sementes</td></tr>\n</tbody>\n</table></div>\n",
+ "toc": [],
+ "recursos": [
+  "ml"
+ ],
+ "complemento": null,
+ "grupo": "Parte IV — Decisão",
+ "tags": []
+}

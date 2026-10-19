@@ -1,0 +1,87 @@
+{
+ "slug": "modelar/fundamentos",
+ "modulo": "modelar",
+ "tipo": "ml",
+ "titulo": "1. Fundamentos",
+ "nav": "1. Fundamentos",
+ "sobretitulo": "Manual de Machine Learning · Parte I — Base",
+ "descricao": "Machine Learning é o conjunto de métodos que estimam uma função a partir de dados em vez de codificá-la manualmente. Dado um conjunto de exemplos, o…",
+ "origem": {
+  "material": "Manual de Machine Learning",
+  "trecho": "seção 1"
+ },
+ "html": "\n<h2 id=\"s1-1\">1.1 O que é Machine Learning</h2>\n<p>Machine Learning é o conjunto de métodos que <b>estimam uma função a partir de dados</b> em vez de codificá-la manualmente. Dado um conjunto de exemplos, o algoritmo ajusta parâmetros para minimizar uma medida de erro e, espera-se, generalizar para dados novos. O objetivo nunca é acertar no treino: é <b>errar pouco em dados nunca vistos</b>.</p>\n<div class=\"grid2\">\n<div class=\"box\"><h3 id=\"tipos-de-aprendizado\">Tipos de aprendizado</h3>\n<ul>\n<li><b>Supervisionado:</b> existem pares (X, y). Subdivide-se em regressão (y contínuo) e classificação (y categórico).</li>\n<li><b>Não supervisionado:</b> só existe X. Clustering, redução de dimensionalidade, detecção de anomalias, estimação de densidade.</li>\n<li><b>Semissupervisionado:</b> poucos rótulos e muitos dados não rotulados.</li>\n<li><b>Por reforço:</b> um agente aprende por interação e recompensa acumulada, sem rótulos — ver <a href=\"/modelar/aprendizagem-por-reforco/\">seção 17</a>.</li>\n<li><b>Recomendação:</b> não é um tipo de aprendizado, mas uma classe de problema com dado, métrica e validação próprios — ver <a href=\"/modelar/sistemas-de-recomendacao/\">seção 16</a>.</li>\n</ul>\n</div>\n<div class=\"box\"><h3 id=\"vocabulario-minimo\">Vocabulário mínimo</h3>\n<ul>\n<li><b>Feature (X):</b> variável de entrada. <b>Target (y):</b> variável a prever.</li>\n<li><b>Parâmetro:</b> aprendido pelo modelo (coeficientes, splits). <b>Hiperparâmetro:</b> definido antes do treino (<code>alpha</code>, <code>max_depth</code>).</li>\n<li><b>Treino / validação / teste:</b> ajustar, escolher e estimar desempenho — nessa ordem e sem contaminar.</li>\n<li><b>Generalização:</b> desempenho em dados fora da amostra de treino.</li>\n</ul>\n</div>\n</div>\n<h2 id=\"s1-2\">1.2 Taxonomia rigorosa — o princípio fundamental</h2>\n<p>O erro conceitual mais comum em ML é misturar categorias. Modelo, função de perda, otimizador, regularização, framework e métrica são <b>coisas diferentes</b> e nenhuma delas substitui a outra.</p>\n<div aria-label=\"O erro conceitual mais comum em ML é misturar categorias. Modelo, função de perda, otimizador, regularização, framework \" class=\"tabela\" role=\"region\" tabindex=\"0\"><table class=\"\">\n<thead><tr><th scope=\"col\">Categoria</th><th scope=\"col\">O que é</th><th scope=\"col\">Exemplos</th></tr></thead>\n<tbody>\n<tr><td><b>Modelos / algoritmos</b></td><td>Estrutura que aprende um mapeamento de X para y (ou a estrutura de X)</td><td>Linear Regression, Logistic Regression, Decision Tree, Random Forest, K-Means, GMM, XGBoost, SVM, KNN, Naive Bayes, PCA, DBSCAN</td></tr>\n<tr><td><b>Funções de perda / custo</b></td><td>Quantificam o erro; são otimizadas, não “preveem”</td><td>MSE, MAE, Huber, Log Loss (Binary Cross Entropy), Categorical Cross Entropy</td></tr>\n<tr><td><b>Métodos de otimização</b></td><td>Algoritmos que minimizam a função de custo ajustando parâmetros</td><td>Gradient Descent, SGD, Mini-Batch GD, Momentum, RMSProp, Adam</td></tr>\n<tr><td><b>Técnicas de regularização</b></td><td>Penalizações e restrições que controlam complexidade e overfitting</td><td>L2 (Ridge), L1 (Lasso), Elastic Net, dropout, early stopping</td></tr>\n<tr><td><b>Frameworks / bibliotecas</b></td><td>Ecossistemas de software para construir e treinar modelos</td><td>Scikit-Learn, TensorFlow, Keras, PyTorch, XGBoost, LightGBM</td></tr>\n<tr><td><b>Métricas de avaliação</b></td><td>Medem o desempenho de um modelo já treinado</td><td>Accuracy, Precision, Recall, F1, ROC-AUC, PR-AUC, MAE, MSE, RMSE, R², Silhouette</td></tr>\n</tbody>\n</table></div>\n<aside class=\"callout callout--erro\"><p class=\"callout__titulo\"><svg aria-hidden=\"true\" class=\"icone\" fill=\"none\" focusable=\"false\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewbox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"m15 9-6 6\"></path><path d=\"m9 9 6 6\"></path></svg><span>Quatro mitos taxonômicos a desfazer</span></p><div class=\"callout__corpo\"><ul>\n<li>“Cross Entropy é um modelo” — <b>falso</b>: é função de perda.</li>\n<li>“Gradient Descent é um modelo” — <b>falso</b>: é método de otimização.</li>\n<li>“TensorFlow é um algoritmo” — <b>falso</b>: é framework.</li>\n<li>“PyTorch é um algoritmo” — <b>falso</b>: é framework.</li>\n</ul></div></aside>\n<h2 id=\"s1-3\">1.3 Como um modelo aprende</h2>\n<div class=\"flow\">\n<div class=\"step\"><span class=\"n\">1</span><div><b>Hipótese.</b> Uma família de funções parametrizadas — reta, árvore, rede — define o que o modelo é capaz de representar.</div></div>\n<div class=\"arrow\">▼</div>\n<div class=\"step\"><span class=\"n\">2</span><div><b>Função de perda.</b> Mede a distância entre previsão e verdade (MSE para regressão, Log Loss para classificação probabilística).</div></div>\n<div class=\"arrow\">▼</div>\n<div class=\"step\"><span class=\"n\">3</span><div><b>Otimização.</b> Ajusta os parâmetros para minimizar a perda — forma fechada (mínimos quadrados), busca gulosa (árvores) ou gradiente (GD, Adam).</div></div>\n<div class=\"arrow\">▼</div>\n<div class=\"step\"><span class=\"n\">4</span><div><b>Regularização.</b> Restringe a complexidade para que o ajuste no treino não vire memorização.</div></div>\n<div class=\"arrow\">▼</div>\n<div class=\"step\"><span class=\"n\">5</span><div><b>Avaliação.</b> Métrica calculada em dados que o modelo nunca viu, com esquema de validação compatível com a estrutura dos dados.</div></div>\n</div>\n<h2 id=\"s1-4\">1.4 Tradeoff viés–variância</h2>\n<div class=\"grid2\">\n<div class=\"box\"><h3 id=\"underfitting-alto-vies\">Underfitting — alto viés</h3>\n<p>Modelo simples demais para o padrão real. Sintoma: erro alto no treino <b>e</b> no teste. Ação: mais capacidade (modelo não linear, mais features, menos regularização).</p></div>\n<div class=\"box\"><h3 id=\"overfitting-alta-variancia\">Overfitting — alta variância</h3>\n<p>Modelo complexo demais; memoriza ruído. Sintoma: erro baixo no treino e alto no teste. Ação: regularizar, podar, mais dados, ensembles, early stopping.</p></div>\n</div>\n<aside class=\"callout callout--atencao\"><p class=\"callout__titulo\"><svg aria-hidden=\"true\" class=\"icone\" fill=\"none\" focusable=\"false\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewbox=\"0 0 24 24\"><path d=\"m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3\"></path><path d=\"M12 9v4\"></path><path d=\"M12 17h.01\"></path></svg><span>Regra de leitura</span></p><div class=\"callout__corpo\">Desempenho excelente no treino não é sinal de bom modelo — é o sintoma clássico de overfitting. O número que importa é o de validação/teste, obtido sem qualquer contato prévio com esses dados.</div></aside>\n<h2 id=\"s1-5\">1.5 Mapa de paradigmas e algoritmos</h2>\n<p>Aprender Machine Learning não é decorar algoritmos: é saber <b>qual abordagem se ajusta ao problema, aos dados e ao objetivo de negócio</b>. O mapa abaixo organiza os algoritmos deste manual pelo paradigma de aprendizado — cada nome leva ao card correspondente.</p>\n<div class=\"grid2 mapa\">\n<div class=\"box\"><h3 id=\"supervisionado\"><span class=\"selo tag-cat\" data-tag=\"sup\">Supervisionado</span></h3><p>Há rótulos: aprende X → y.</p>\n<ul>\n<li><b>Classificação:</b> <a href=\"/modelar/metodos-probabilisticos/#m-naive-bayes\">Naive Bayes</a>, <a href=\"/modelar/aprendizado-supervisionado/#m-logistic\">Regressão Logística</a>, <a href=\"/modelar/aprendizado-supervisionado/#m-knn\">KNN</a>, <a href=\"/modelar/aprendizado-supervisionado/#m-decision-tree\">Decision Tree</a>, <a href=\"/modelar/aprendizado-supervisionado/#m-random-forest\">Random Forest</a>, <a href=\"/modelar/aprendizado-supervisionado/#m-svm\">SVM</a> e boosting (<a href=\"/modelar/aprendizado-supervisionado/#m-xgboost\">XGBoost</a>, <a href=\"/modelar/aprendizado-supervisionado/#m-lightgbm\">LightGBM</a>, <a href=\"/modelar/aprendizado-supervisionado/#m-catboost\">CatBoost</a>)</li>\n<li><b>Regressão:</b> <a href=\"/modelar/aprendizado-supervisionado/#m-linear-regression\">linear simples e múltipla</a>, <a href=\"/modelar/aprendizado-supervisionado/#s2-1\">multivariada (vários alvos)</a>, <a href=\"/modelar/aprendizado-supervisionado/#m-polynomial\">polinomial</a>, <a href=\"/modelar/aprendizado-supervisionado/#m-ridge\">Ridge</a>, <a href=\"/modelar/aprendizado-supervisionado/#m-lasso\">Lasso</a>, <a href=\"/modelar/aprendizado-supervisionado/#m-elasticnet\">Elastic Net</a> — e os mesmos modelos de árvore e boosting</li>\n</ul></div>\n<div class=\"box\"><h3 id=\"nao-supervisionado\"><span class=\"selo tag-cat\" data-tag=\"nsup\">Não supervisionado</span></h3><p>Sem rótulos: descobre estrutura.</p>\n<ul>\n<li><b>Clustering:</b> <a href=\"/modelar/aprendizado-nao-supervisionado/#m-kmeans\">K-Means</a>, <a href=\"/modelar/aprendizado-nao-supervisionado/#m-dbscan\">DBSCAN</a>, <a href=\"/modelar/aprendizado-nao-supervisionado/#m-gmm\">GMM</a>, <a href=\"/modelar/aprendizado-nao-supervisionado/#m-hierarchical\">hierárquico</a></li>\n<li><b>Redução de dimensionalidade:</b> <a href=\"/modelar/aprendizado-nao-supervisionado/#m-pca\">PCA</a>, <a href=\"/modelar/aprendizado-nao-supervisionado/#m-ica\">ICA</a></li>\n<li><b>Associação:</b> <a href=\"/modelar/aprendizado-nao-supervisionado/#m-apriori\">Apriori</a>, <a href=\"/modelar/aprendizado-nao-supervisionado/#m-fpgrowth\">FP-Growth</a></li>\n<li><b>Detecção de anomalias:</b> <a href=\"/modelar/aprendizado-nao-supervisionado/#m-zscore\">Z-score / MAD</a>, <a href=\"/modelar/aprendizado-nao-supervisionado/#m-isolation-forest\">Isolation Forest</a>, <a href=\"/modelar/aprendizado-nao-supervisionado/#m-lof\">LOF</a>, <a href=\"/modelar/aprendizado-nao-supervisionado/#m-ocsvm\">One-Class SVM</a></li>\n<li><b>Densidade:</b> <a href=\"/modelar/aprendizado-nao-supervisionado/#m-kde\">KDE</a>, <a href=\"/modelar/aprendizado-nao-supervisionado/#m-gmm\">GMM</a></li>\n</ul></div>\n<div class=\"box\"><h3 id=\"semissupervisionado\"><span class=\"selo tag-cat\" data-tag=\"semi\">Semissupervisionado</span></h3><p>Poucos rótulos e muitos dados sem rótulo.</p>\n<ul>\n<li><a href=\"/modelar/aprendizagem-semissupervisionada/#m-self-training\">Self-Training</a>, <a href=\"/modelar/aprendizagem-semissupervisionada/#m-co-training\">Co-Training</a>, <a href=\"/modelar/aprendizagem-semissupervisionada/#m-label-spreading\">Label Propagation / Spreading</a> — ver <a href=\"/modelar/aprendizagem-semissupervisionada/\">seção 18</a></li>\n</ul></div>\n<div class=\"box\"><h3 id=\"reforco\"><span class=\"selo tag-cat\" data-tag=\"rl\">Reforço</span></h3><p>Um agente aprende por interação, recompensa e penalidade.</p>\n<ul>\n<li><b>Sem modelo (model-free):</b> <a href=\"/modelar/aprendizagem-por-reforco/#m-q-learning\">Q-Learning</a>, <a href=\"/modelar/aprendizagem-por-reforco/#m-dqn\">DQN</a>, otimização de política (<a href=\"/modelar/aprendizagem-por-reforco/#m-policy-gradient\">REINFORCE → PPO</a>), <a href=\"/modelar/aprendizagem-por-reforco/#m-bandits\">bandits</a></li>\n<li><b>Baseado em modelo:</b> modelo <b>dado</b> (<a href=\"/modelar/aprendizagem-por-reforco/#m-dp\">programação dinâmica</a>) e modelo <b>aprendido</b> (<a href=\"/modelar/aprendizagem-por-reforco/#m-dyna-q\">Dyna-Q</a>)</li>\n</ul></div>\n</div>\n<p>Fora dessa árvore, mas com a mesma importância prática: <a href=\"/modelar/sistemas-de-recomendacao/\">sistemas de recomendação</a> (uma classe de problema, não um paradigma) e <a href=\"/modelar/redes-neurais-e-deep-learning/\">redes neurais</a>, que atravessam todos os paradigmas.</p>\n<aside class=\"callout callout--atencao\"><p class=\"callout__titulo\"><svg aria-hidden=\"true\" class=\"icone\" fill=\"none\" focusable=\"false\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewbox=\"0 0 24 24\"><path d=\"m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3\"></path><path d=\"M12 9v4\"></path><path d=\"M12 17h.01\"></path></svg><span>Classificações que circulam em roadmaps populares — e o que este manual corrige</span></p><div class=\"callout__corpo\"><ul>\n<li><b>PCA e ICA não são “associação”</b>: são redução de dimensionalidade. Associação é a mineração de itens que ocorrem juntos (Apriori, FP-Growth).</li>\n<li><b>“Multivariate regression” é ambíguo</b>: <i>múltipla</i> tem várias features e um alvo; <i>multivariada</i>, no sentido estrito, tem vários alvos. Veja a <a href=\"/modelar/aprendizado-supervisionado/#s2-1\">seção 2.1</a>.</li>\n<li><b>Self-Training não é “de classificação” e Co-Training “de regressão”</b>: ambos nasceram e são usados sobretudo em classificação, e ambos têm variantes para regressão.</li>\n<li><b>Z-score não é algoritmo de aprendizado</b>: é uma regra estatística univariada que pressupõe normalidade e sofre <i>masking</i>; a versão robusta usa mediana e MAD.</li>\n<li><b>Boosting costuma faltar nesses mapas</b>, embora seja o estado da arte prático em dados tabulares (seção 2.6).</li>\n</ul></div></aside>\n<p>O que diferencia um bom cientista de dados não é conhecer muitos algoritmos, mas entender de cada um os <b>pressupostos, pontos fortes, limitações, requisitos de dados, interpretabilidade, custo computacional e métricas de avaliação</b> — os sete critérios comparados lado a lado na <a href=\"/modelar/arvore-de-decisao-de-modelos/#s12-5\">matriz da seção 12.5</a>.</p>\n",
+ "toc": [
+  {
+   "id": "s1-1",
+   "texto": "1.1 O que é Machine Learning",
+   "nivel": 2
+  },
+  {
+   "id": "tipos-de-aprendizado",
+   "texto": "Tipos de aprendizado",
+   "nivel": 3
+  },
+  {
+   "id": "vocabulario-minimo",
+   "texto": "Vocabulário mínimo",
+   "nivel": 3
+  },
+  {
+   "id": "s1-2",
+   "texto": "1.2 Taxonomia rigorosa — o princípio fundamental",
+   "nivel": 2
+  },
+  {
+   "id": "s1-3",
+   "texto": "1.3 Como um modelo aprende",
+   "nivel": 2
+  },
+  {
+   "id": "s1-4",
+   "texto": "1.4 Tradeoff viés–variância",
+   "nivel": 2
+  },
+  {
+   "id": "underfitting-alto-vies",
+   "texto": "Underfitting — alto viés",
+   "nivel": 3
+  },
+  {
+   "id": "overfitting-alta-variancia",
+   "texto": "Overfitting — alta variância",
+   "nivel": 3
+  },
+  {
+   "id": "s1-5",
+   "texto": "1.5 Mapa de paradigmas e algoritmos",
+   "nivel": 2
+  },
+  {
+   "id": "supervisionado",
+   "texto": "Supervisionado",
+   "nivel": 3
+  },
+  {
+   "id": "nao-supervisionado",
+   "texto": "Não supervisionado",
+   "nivel": 3
+  },
+  {
+   "id": "semissupervisionado",
+   "texto": "Semissupervisionado",
+   "nivel": 3
+  },
+  {
+   "id": "reforco",
+   "texto": "Reforço",
+   "nivel": 3
+  }
+ ],
+ "recursos": [
+  "ml"
+ ],
+ "complemento": null,
+ "grupo": "Parte I — Base",
+ "tags": []
+}

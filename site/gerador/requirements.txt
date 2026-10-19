@@ -1,0 +1,20 @@
+# Versões fixadas iguais às do guia de visualização original (README do guia), para que o texto
+# "gerado com ..." e as imagens fiquem idênticos ao material de origem.
+matplotlib==3.11.1
+seaborn==0.13.2
+pandas==3.0.5
+numpy==2.5.2
+pillow==12.3.0
+scipy
+statsmodels
+pingouin
+scikit-posthocs
+openpyxl
+nbformat
+nbclient
+ipykernel
+pygments
+markdown-it-py
+mdit-py-plugins
+latex2mathml
+beautifulsoup4

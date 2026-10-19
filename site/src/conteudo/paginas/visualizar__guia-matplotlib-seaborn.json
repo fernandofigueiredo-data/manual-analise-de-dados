@@ -1,0 +1,21 @@
+{
+ "slug": "visualizar/guia-matplotlib-seaborn",
+ "modulo": "visualizar",
+ "tipo": "viz",
+ "titulo": "Matplotlib e seaborn, do gráfico padrão ao gráfico que conta uma história",
+ "nav": "Guia matplotlib e seaborn",
+ "sobretitulo": "Guia interativo",
+ "descricao": "Um manual de código para as duas bibliotecas de visualização mais usadas em Python e, ao mesmo tempo, um manual prático das ideias de Cole Nussbaumer Knaflic…",
+ "origem": {
+  "material": "Guia matplotlib e seaborn",
+  "trecho": "Como usar este guia"
+ },
+ "html": "\n<p class=\"lead\">Um manual de código para as duas bibliotecas de visualização mais usadas em Python e, ao mesmo tempo, um manual prático das ideias de Cole Nussbaumer Knaflic em <em>Storytelling com Dados</em>. Cada exemplo mostra o código completo e a imagem que ele gerou.</p>\n<div class=\"cartoes3\">\n<div class=\"cartao\"><p class=\"cartao-rot\">Para aprender a biblioteca</p><p>Comece pelos <a href=\"/visualizar/fundamentos/\">fundamentos</a> e siga para o <a href=\"/visualizar/catalogo-de-graficos/\">catálogo</a>. Os filtros da barra lateral separam os gráficos por situação e por biblioteca.</p></div>\n<div class=\"cartao\"><p class=\"cartao-rot\">Para melhorar um gráfico</p><p>Veja os <a href=\"/visualizar/antes-e-depois/\">pares antes e depois</a>, os <a href=\"/visualizar/erros-comuns/\">erros comuns</a> e o <a href=\"/visualizar/referencia-rapida/#r-estilo\">estilo reutilizável</a>.</p></div>\n<div class=\"cartao\"><p class=\"cartao-rot\">Para preparar uma apresentação</p><p>Siga o <a href=\"/visualizar/roteiro-de-montagem/\">roteiro de montagem</a>, da grande ideia ao gráfico final, e confira o <a href=\"/visualizar/referencia-rapida/#r-checklist\">checklist</a>.</p></div>\n</div>\n<h2 class=\"h3-solto\">Convenções</h2>\n<ul>\n<li><strong>Cores com função.</strong> <span class=\"amostra amostra--cinza\"></span> cinza para contexto, <span class=\"amostra amostra--azul\"></span> azul para destaque e <span class=\"amostra amostra--laranja\"></span> laranja só para alertas e contrastes. O próprio guia segue a mesma regra.</li>\n<li><strong>Código completo.</strong> Cada bloco roda sozinho em um notebook ou script: tem os imports, os dados e o <code>plt.show()</code>. A maior parte começa com um preâmbulo de estilo de oito linhas, explicado em <a href=\"/visualizar/fundamentos/#f-estilos\">Estilos e rcParams</a>.</li>\n<li><strong>Dados.</strong> São sintéticos (e marcados como tal) ou vêm dos conjuntos embutidos no seaborn (<code>tips</code>, <code>flights</code>, <code>iris</code>). Na primeira execução, <code>sns.load_dataset</code> baixa os arquivos da internet.</li>\n<li><strong>Quem disse o quê.</strong> <span class=\"selo knaflic\">Knaflic</span> marca ideias da autora, sempre parafraseadas. <span class=\"selo tec\">Recomendação técnica</span> marca sugestões deste guia sobre matplotlib e seaborn. <span class=\"selo confirmar\">a confirmar no livro</span> marca detalhes que devem ser conferidos na fonte.</li>\n</ul>\n<footer class=\"rodape-guia\"><p>Guia gerado em Python; cada imagem foi produzida pelo código exibido ao lado dela. Ideias de storytelling: Cole Nussbaumer Knaflic, <em>Storytelling com Dados</em>.</p></footer>",
+ "toc": [],
+ "recursos": [
+  "viz"
+ ],
+ "complemento": null,
+ "grupo": null,
+ "tags": null
+}

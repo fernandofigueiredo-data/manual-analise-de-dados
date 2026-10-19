@@ -1,0 +1,30 @@
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Node e Astro (site/)
+node_modules/
+site/dist/
+site/.astro/
+.vercel/
+
+# Python (site/gerador/)
+.venv/
+site/gerador/cache/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Relatórios brutos do Lighthouse (o resumo RESUMO.md fica no repositório)
+docs/qualidade/lighthouse/*.html
+docs/qualidade/lighthouse/*.json
+
+# Variáveis de ambiente
+.env
+.env.*
+
+# Configuração local de ferramentas
+.claude/
+.impeccable/
+.vscode/
+.idea/

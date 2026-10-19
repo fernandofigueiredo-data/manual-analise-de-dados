@@ -1,0 +1,23 @@
+{
+ "slug": "modelar/regularizacao",
+ "modulo": "modelar",
+ "tipo": "ml",
+ "titulo": "6. Regularização",
+ "nav": "6. Regularização",
+ "sobretitulo": "Manual de Machine Learning · Parte III — Treinamento",
+ "descricao": "Regularização não é um modelo: é um conjunto de restrições à complexidade aplicadas durante o treino para trocar um pouco de viés por bastante redução de…",
+ "origem": {
+  "material": "Manual de Machine Learning",
+  "trecho": "seção 6"
+ },
+ "html": "\n<p>Regularização não é um modelo: é um conjunto de <b>restrições à complexidade</b> aplicadas durante o treino para trocar um pouco de viés por bastante redução de variância.</p>\n<div aria-label=\"Regularização não é um modelo: é um conjunto de restrições à complexidade aplicadas durante o treino para trocar um pouc\" class=\"tabela\" role=\"region\" tabindex=\"0\"><table class=\"\">\n<thead><tr><th scope=\"col\">Técnica</th><th scope=\"col\">Penalização / mecanismo</th><th scope=\"col\">Efeito</th><th scope=\"col\">Onde aparece</th></tr></thead>\n<tbody>\n<tr><td><b>L2 (Ridge)</b></td><td>α · Σ wⱼ²</td><td>Encolhe coeficientes de forma suave; estabiliza sob multicolinearidade; <b>não zera</b></td><td><code>Ridge</code>, <code>LogisticRegression</code>, <code>weight_decay</code></td></tr>\n<tr><td><b>L1 (Lasso)</b></td><td>α · Σ |wⱼ|</td><td><b>Zera</b> coeficientes: seleção automática de variáveis</td><td><code>Lasso</code>, <code>reg_alpha</code> no XGBoost</td></tr>\n<tr><td><b>Elastic Net</b></td><td>combinação L1 + L2 via <code>l1_ratio</code></td><td>Seleção com estabilidade quando há features correlacionadas em grupo</td><td><code>ElasticNet</code></td></tr>\n<tr><td><b>Early stopping</b></td><td>Interrompe o treino quando a perda de validação para de cair</td><td>Evita memorização nas últimas iterações; barato e muito eficaz</td><td>Boosting, redes neurais</td></tr>\n<tr><td><b>Dropout</b></td><td>Desliga neurônios aleatoriamente no treino</td><td>Impede coadaptação de unidades</td><td>Redes neurais</td></tr>\n<tr><td><b>Poda / limites estruturais</b></td><td><code>max_depth</code>, <code>min_samples_leaf</code>, <code>ccp_alpha</code></td><td>Reduz a variância de árvores</td><td>Árvores e ensembles</td></tr>\n<tr><td><b>Data augmentation</b></td><td>Gera variações plausíveis dos dados</td><td>Amplia a amostra efetiva</td><td>Imagem, áudio, texto</td></tr>\n</tbody>\n</table></div>\n<aside class=\"callout callout--nota\"><p class=\"callout__titulo\"><svg aria-hidden=\"true\" class=\"icone\" fill=\"none\" focusable=\"false\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewbox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><path d=\"M12 16v-4\"></path><path d=\"M12 8h.01\"></path></svg><span>α (ou C) é um hiperparâmetro, não uma constante</span></p><div class=\"callout__corpo\">No scikit-learn, <code>alpha</code> maior significa <b>mais</b> regularização nos modelos lineares de regressão; em <code>LogisticRegression</code> e <code>SVC</code> o parâmetro é <code>C</code>, que é o <b>inverso</b>: C menor significa mais regularização. Sempre escolha por validação cruzada e sempre padronize antes.</div></aside>\n",
+ "toc": [],
+ "recursos": [
+  "ml"
+ ],
+ "complemento": null,
+ "grupo": "Parte III — Treinamento",
+ "tags": [
+  "Regularização"
+ ]
+}

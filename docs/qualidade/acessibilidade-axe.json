@@ -1,0 +1,113 @@
+{
+ "data": "2026-10-02T12:22:44.607Z",
+ "base": "http://localhost:4321",
+ "paginas": 67,
+ "violacoes": [],
+ "teclado": [
+  {
+   "nome": "1º Tab foca \"Pular para o conteúdo\"",
+   "ok": true,
+   "det": ""
+  },
+  {
+   "nome": "Enter no link leva o foco ao conteúdo",
+   "ok": true,
+   "det": ""
+  },
+  {
+   "nome": "\"/\" abre a busca com foco no campo",
+   "ok": true,
+   "det": ""
+  },
+  {
+   "nome": "Busca retorna resultados para \"qui-quadrado\"",
+   "ok": true,
+   "det": "6 resultados"
+  },
+  {
+   "nome": "Setas + Enter abrem um resultado",
+   "ok": true,
+   "det": "http://localhost:4321/explorar/analise-univariada/#conteudo"
+  },
+  {
+   "nome": "Esc fecha a busca",
+   "ok": true,
+   "det": ""
+  },
+  {
+   "nome": "Enter em \"Copiar\" dá retorno",
+   "ok": true,
+   "det": "Copiado"
+  },
+  {
+   "nome": "Enter em uma figura abre a ampliação",
+   "ok": true,
+   "det": ""
+  },
+  {
+   "nome": "Esc fecha a figura e devolve o foco",
+   "ok": true,
+   "det": ""
+  },
+  {
+   "nome": "Setas trocam a aba (matplotlib → seaborn)",
+   "ok": true,
+   "det": ""
+  },
+  {
+   "nome": "Enter em um eixo realça linhas do código",
+   "ok": true,
+   "det": ""
+  },
+  {
+   "nome": "Briefing atualiza o resumo pelo teclado",
+   "ok": true,
+   "det": ""
+  },
+  {
+   "nome": "Espaço marca item da lista de verificação",
+   "ok": true,
+   "det": ""
+  },
+  {
+   "nome": "ML: Enter na etiqueta \"Boosting\" filtra o índice dos modelos",
+   "ok": true,
+   "det": "4 visíveis"
+  },
+  {
+   "nome": "ML: Enter abre o cartão do modelo",
+   "ok": true,
+   "det": ""
+  },
+  {
+   "nome": "ML: link direto #m-lightgbm abre o cartão",
+   "ok": true,
+   "det": ""
+  },
+  {
+   "nome": "ML: diagnóstico do exemplo pelo teclado gera os 16 itens",
+   "ok": true,
+   "det": "16 itens"
+  },
+  {
+   "nome": "ML: campos do diagnóstico alcançáveis pelo teclado",
+   "ok": true,
+   "det": ""
+  },
+  {
+   "nome": "Celular: Enter abre o menu",
+   "ok": true,
+   "det": ""
+  },
+  {
+   "nome": "Celular: Esc fecha o menu",
+   "ok": true,
+   "det": ""
+  },
+  {
+   "nome": "Celular: sem rolagem horizontal da página (375 px)",
+   "ok": true,
+   "det": ""
+  }
+ ]
+}

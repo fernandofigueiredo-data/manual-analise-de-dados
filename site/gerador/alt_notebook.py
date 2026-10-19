@@ -1,0 +1,43 @@
+"""Textos alternativos das figuras geradas pelo notebook, por (célula, ordem da figura na célula).
+
+Descrevem o tipo de gráfico, as variáveis e o título definidos no código da célula.
+"""
+
+ALT = {
+    (40, 0): "Gráfico de barras com o percentual de valores nulos de cada coluna que tem nulos, ordenado do maior para o menor. Título: Percentual de dados faltantes por coluna.",
+    (104, 0): "Histograma de coluna_num com barras de largura 1 e curva de densidade (KDE) sobreposta, mostrando distribuição assimétrica à direita. Título: Distribuição de coluna_num.",
+    (108, 0): "Curva de densidade (KDE) preenchida de coluna_num, com um traço no eixo x para cada observação (rugplot).",
+    (110, 0): "Dois painéis lado a lado para coluna_num: à esquerda, boxplot horizontal com os pontos individuais espalhados por cima; à direita, violino com linhas tracejadas nos quartis.",
+    (111, 0): "Painel de distribuição de coluna_num: em cima, histograma com KDE, linhas tracejadas nos quartis e linha contínua na média; embaixo, boxplot alinhado no mesmo eixo x. O título traz a mediana e a assimetria.",
+    (114, 0): "Dois painéis para coluna_num: à esquerda, histograma em densidade com KDE e a curva normal teórica sobreposta; à direita, QQ-plot, em que os pontos se afastam da reta nas pontas. O título traz assimetria e curtose.",
+    (114, 1): "Os mesmos dois painéis para log_coluna_num, depois da transformação logarítmica: histograma com a curva normal teórica e QQ-plot com os pontos mais próximos da reta. O título traz assimetria e curtose.",
+    (117, 0): "Dois gráficos de barras: à esquerda, contagem de coluna_ordinal na ordem lógica Baixo, Médio, Alto; à direita, barras horizontais com a frequência de cada categoria de coluna_cat, ordenadas, com o valor escrito em cada barra.",
+    (121, 0): "Dois boxplots horizontais de coluna_num_2 com o mesmo eixo x: à esquerda com whis = 1,5, que marca vários pontos como outliers; à direita com whis = 3,0, que marca só os extremos.",
+    (131, 0): "Dois painéis de coluna_num contra coluna_num_2: à esquerda, gráfico de dispersão com pontos semitransparentes; à direita, histograma 2D com barra de cores mostrando onde os pontos se concentram.",
+    (135, 0): "Dois mapas de calor triangulares com as correlações de Pearson e de Spearman entre coluna_num, coluna_num_2, coluna_valor, coluna_binaria e log_coluna_num, com o valor anotado em cada célula e escala de -1 a 1.",
+    (138, 0): "Distribuição conjunta de coluna_num e coluna_num_2 em hexágonos, com os histogramas de cada variável nas margens.",
+    (139, 0): "Distribuição conjunta de log_coluna_num e coluna_num_2 em curvas de densidade, separadas pelos grupos X e Y de coluna_cat_2, com os pontos sobrepostos e as densidades de cada grupo nas margens.",
+    (145, 0): "Dois painéis comparando coluna_num entre as categorias A, B e C: à esquerda, boxplots lado a lado; à direita, curvas de densidade sobrepostas e preenchidas, uma por categoria.",
+    (146, 0): "Dois histogramas sobrepostos de coluna_num pelos grupos de coluna_cat_2: à esquerda em contagem, em que a altura depende do tamanho do grupo; à direita em densidade por grupo, com formas comparáveis.",
+    (148, 0): "Dois painéis de violinos de coluna_num por categoria A, B e C: à esquerda, violinos divididos ao meio pelos grupos de coluna_cat_2, com linhas nos quartis; à direita, violinos neutros com os pontos individuais por cima.",
+    (149, 0): "Gráfico de barras com a média de coluna_num_2 nas categorias A, B e C, com barra de erro igual ao desvio padrão e o valor da média escrito no centro de cada barra.",
+    (153, 0): "Dois painéis da proporção de coluna_binaria dentro de cada categoria de coluna_cat: à esquerda, mapa de calor com os percentuais anotados; à direita, barras horizontais 100% empilhadas.",
+    (157, 0): "Três gráficos de dispersão de coluna_num contra coluna_num_2, um para cada categoria A, B e C, lado a lado.",
+    (160, 0): "Pairplot em formato de triângulo com coluna_num, coluna_num_2 e log_coluna_num: dispersões entre cada par e curvas de densidade na diagonal, com cores pelos grupos de coluna_cat_2.",
+    (162, 0): "Mapa de calor da média de coluna_num_2 por coluna_cat nas linhas e coluna_ordinal nas colunas, com os valores anotados. Título: Média de coluna_num_2 por coluna_cat × coluna_ordinal.",
+    (168, 0): "Gráfico de linhas com marcadores do total mensal de coluna_valor e da média móvel de 3 meses ao longo de 2024. Título: Total mensal de coluna_valor.",
+    (171, 0): "Mapa de calor com a contagem de registros por dia da semana (linhas, de segunda a domingo) e mês (colunas), com os valores anotados. Título: Registros por dia da semana × mês.",
+    (175, 0): "Dois gráficos de linhas: à esquerda, receita mensal do ano atual contra a do ano anterior, mês a mês; à direita, receita acumulada no ano, que reinicia em janeiro.",
+    (185, 0): "Dois painéis do funil de conversão: à esquerda, barras horizontais com o número de clientes em cada etapa e o percentual acumulado; à direita, barras agrupadas com a conversão acumulada por etapa para os segmentos controle e tratamento.",
+    (188, 0): "Mapa de calor da retenção por coorte: linhas são os meses da primeira compra, colunas são os meses desde a primeira compra, e cada célula traz o percentual de clientes que voltaram a comprar.",
+    (192, 0): "Grade de quatro histogramas com KDE, um para cada variável numérica (coluna_num, coluna_num_2, coluna_valor e duracao_dias), cada um com uma linha tracejada na mediana. Título: Distribuição das variáveis numéricas.",
+    (194, 0): "Gráfico de apresentação: barras horizontais ordenadas com o número de registros por categoria, maior no topo, com o valor ao fim de cada barra, grade vertical discreta e nota de fonte no canto inferior direito.",
+    (197, 0): "Dois painéis de boxplots de coluna_num por categoria A, B e C, um para cada valor de coluna_cat_2.",
+    (198, 0): "Grade de quatro gráficos de dispersão de coluna_num contra coluna_num_2: colunas pelos grupos de coluna_cat_2, linhas pelos níveis acima e abaixo da mediana, com cores por coluna_binaria e legenda.",
+    (199, 0): "Grade 3 × 3 com coluna_num, coluna_num_2 e log_coluna_num: histogramas na diagonal, dispersões acima dela e curvas de densidade preenchidas abaixo.",
+    (246, 0): "Gráfico de dispersão de coluna_num contra coluna_num_2 com a reta de regressão calculada pelo scipy, usando todos os dados. O título traz a equação da reta, o r e o R², com o prefixo Com outliers.",
+    (248, 0): "O mesmo gráfico de dispersão com reta de regressão, agora sem os outliers. O título traz a nova equação, o r e o R², com o prefixo Sem outliers.",
+    (250, 0): "Três gráficos de regressão de coluna_num contra coluna_num_2 sem outliers, com o mesmo eixo y: reta linear com faixa de IC 95%, curva polinomial de ordem 2 e curva y ~ log(x).",
+    (251, 0): "Três painéis, um por categoria A, B e C, com dispersão de coluna_num contra coluna_num_2 e uma reta de regressão para cada grupo de coluna_cat_2, com marcadores diferentes por grupo.",
+    (260, 0): "Gráfico de barras com a média de coluna_num_2 para o Grupo 0 e o Grupo 1, barras de erro de desvio padrão, valor da média no centro de cada barra e um colchete entre as barras com asteriscos e o p-valor do teste.",
+}

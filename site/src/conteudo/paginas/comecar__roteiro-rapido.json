@@ -1,0 +1,19 @@
+{
+ "slug": "comecar/roteiro-rapido",
+ "modulo": "comecar",
+ "tipo": "nb",
+ "titulo": "0. Roteiro rápido: recebi um novo dataset",
+ "nav": "0. Roteiro rápido",
+ "sobretitulo": "Notebook mestre",
+ "descricao": "Qual a sequência de trabalho?",
+ "origem": {
+  "material": "Notebook mestre",
+  "trecho": "seção 0 (célula 2)"
+ },
+ "html": "<p>A Análise Exploratória de Dados (<strong>EDA</strong>) é a etapa inicial de qualquer projeto. O objetivo é entender a \"cara\" dos dados antes de tirar conclusões. As perguntas que guiam a EDA são:</p>\n<ol>\n<li><strong>Estrutura</strong>: como os dados estão organizados? O que é cada linha e cada coluna?</li>\n<li><strong>Tipos</strong>: com que tipos de dados estou trabalhando? Os tipos lidos estão corretos?</li>\n<li><strong>Qualidade</strong>: há nulos, duplicados, valores inválidos ou formatos inconsistentes?</li>\n<li><strong>Relevância</strong>: quais colunas são úteis para a pergunta de negócio? Quais posso ignorar, e por quê?</li>\n<li><strong>Insights</strong>: que padrões, diferenças e relações os dados revelam?</li>\n</ol>\n<p><strong>Sequência de trabalho</strong></p>\n<div class=\"codigo\" data-lang=\"text\"><div class=\"codigo__barra\" data-pagefind-ignore=\"\"><span class=\"codigo__lang\">texto</span><button class=\"codigo__copiar\" data-copiar=\"\" type=\"button\">Copiar</button></div><pre aria-label=\"Código texto\" class=\"codigo__pre\" tabindex=\"0\"><code><span class=\"ln\" data-n=\"1\">Pergunta de negócio</span>\n<span class=\"ln\" data-n=\"2\">   └─► Importar / consultar SQL (Seção 2) ─► Inspecionar (3) ─► Limpar e combinar tabelas (4)</span>\n<span class=\"ln\" data-n=\"3\">          └─► Descrever (5) ─► Visualizar distribuições (6) ─► Outliers (7)</span>\n<span class=\"ln\" data-n=\"4\">                 └─► Relacionar variáveis (8) ─► Tempo e variações (9) ─► KPIs (10)</span>\n<span class=\"ln\" data-n=\"5\">                        └─► Testar hipóteses e A/B (12, 13) ─► Interpretar e comunicar (14)</span></code></pre></div><aside class=\"callout callout--atencao\"><p class=\"callout__titulo\"><svg aria-hidden=\"true\" class=\"icone\" fill=\"none\" focusable=\"false\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewbox=\"0 0 24 24\"><path d=\"m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3\"></path><path d=\"M12 9v4\"></path><path d=\"M12 17h.01\"></path></svg><span>O que observar</span></p><div class=\"callout__corpo\"><ul>\n<li>A EDA é <strong>iterativa</strong>. Um gráfico na Seção <a href=\"/explorar/analise-bivariada-e-multivariada/\">8</a> pode revelar um problema que exige voltar à limpeza (Seção <a href=\"/preparar/limpeza-e-tratamento/\">4</a>).</li>\n<li>Tabelas não bastam. Muitos padrões, como valores arredondados, grupos ocultos e caudas longas, só aparecem quando os dados são <strong>plotados de formas diferentes</strong>.</li>\n<li>Registre cada decisão (o que removeu, filtrou ou transformou, e por quê). Isso será usado no detalhamento técnico do relatório (Seção <a href=\"/comunicar/insights-e-comunicacao/\">14</a>).</li>\n</ul></div></aside>\n",
+ "toc": [],
+ "recursos": [],
+ "complemento": null,
+ "grupo": null,
+ "tags": null
+}

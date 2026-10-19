@@ -1,0 +1,62 @@
+{
+ "slug": "modelar/casos-praticos",
+ "modulo": "modelar",
+ "tipo": "ml",
+ "titulo": "14. Casos práticos empresariais",
+ "nav": "14. Casos práticos empresariais",
+ "sobretitulo": "Manual de Machine Learning · Parte IV — Decisão",
+ "descricao": "Problema: classificação binária com janela de previsão (ex.: cancelamento nos próximos 30 dias). Armadilha: usar eventos posteriores ao corte (pedido de…",
+ "origem": {
+  "material": "Manual de Machine Learning",
+  "trecho": "seção 14"
+ },
+ "html": "\n<div class=\"grid2\">\n<div class=\"box\"><h2 id=\"churn-de-assinantes\">Churn de assinantes</h2>\n<p><b>Problema:</b> classificação binária com janela de previsão (ex.: cancelamento nos próximos 30 dias).<br/>\n<b>Armadilha:</b> usar eventos posteriores ao corte (pedido de cancelamento) como feature — target leakage clássico.<br/>\n<b>Modelos:</b> Logistic como baseline, LightGBM/XGBoost como candidatos.<br/>\n<b>Métrica:</b> PR-AUC + recall no topo do ranking (lift da campanha de retenção).</p></div>\n<div class=\"box\"><h3 id=\"deteccao-de-fraude\">Detecção de fraude</h3>\n<p><b>Problema:</b> classificação extremamente desbalanceada (0,1%–1%) ou detecção de anomalias sem rótulo.<br/>\n<b>Armadilha:</b> avaliar por accuracy; ignorar a ordem temporal das transações.<br/>\n<b>Modelos:</b> XGBoost com <code>scale_pos_weight</code>; IsolationForest quando não há rótulo.<br/>\n<b>Métrica:</b> PR-AUC, precision@k, custo esperado por threshold.</p></div>\n<div class=\"box\"><h3 id=\"previsao-de-demanda\">Previsão de demanda</h3>\n<p><b>Problema:</b> regressão com forte componente temporal e sazonalidade.<br/>\n<b>Armadilha:</b> K-Fold embaralhado; média móvel calculada com o futuro.<br/>\n<b>Modelos:</b> boosting com lags, médias móveis e calendário; modelos temporais dedicados.<br/>\n<b>Métrica:</b> MAE ou RMSE por SKU/loja; MAPE só onde y não se aproxima de zero.</p></div>\n<div class=\"box\"><h3 id=\"segmentacao-de-clientes\">Segmentação de clientes</h3>\n<p><b>Problema:</b> clustering sem rótulo, geralmente sobre RFM ou comportamento.<br/>\n<b>Armadilha:</b> não padronizar; escolher k pelo gosto; segmentos não acionáveis.<br/>\n<b>Modelos:</b> K-Means como padrão, GMM se as fronteiras são suaves, DBSCAN se há ruído e formato irregular.<br/>\n<b>Métrica:</b> Silhouette + Davies-Bouldin + <b>validação com marketing</b>.</p></div>\n<div class=\"box\"><h3 id=\"risco-de-credito\">Risco de crédito</h3>\n<p><b>Problema:</b> classificação com exigência regulatória de explicação.<br/>\n<b>Armadilha:</b> modelo excelente e inexplicável; probabilidade descalibrada usada para precificar.<br/>\n<b>Modelos:</b> Logistic com WoE/scorecard; boosting + SHAP quando permitido.<br/>\n<b>Métrica:</b> ROC-AUC/KS, Brier score e curva de calibração; monitorar estabilidade (PSI).</p></div>\n<div class=\"box\"><h3 id=\"manutencao-preditiva\">Manutenção preditiva</h3>\n<p><b>Problema:</b> classificação de falha rara em janela futura, ou anomalia em séries de sensores.<br/>\n<b>Armadilha:</b> misturar máquinas entre treino e teste (usar <code>GroupKFold</code>); vazamento temporal.<br/>\n<b>Modelos:</b> boosting sobre features de janela; IsolationForest/autoencoder para anomalia.<br/>\n<b>Métrica:</b> recall com precision mínima aceitável; custo de parada não planejada × custo de inspeção.</p></div>\n<div class=\"box\"><h3 id=\"recomendacao-em-e-commerce\">Recomendação em e-commerce</h3>\n<p><b>Problema:</b> ordenar produtos por cliente a partir de compras e navegação (feedback implícito).<br/>\n<b>Armadilha:</b> split aleatório de interações e popularidade calculada com o período inteiro — ambos vazam o futuro.<br/>\n<b>Modelos:</b> popularidade como piso; item-based e fatoração (ALS) para recorrentes; conteúdo para lançamentos; híbrido em produção.<br/>\n<b>Métrica:</b> NDCG@10 e recall@10 em split temporal, cobertura de catálogo; validação final por teste A/B.</p></div>\n<div class=\"box\"><h3 id=\"otimizacao-de-ofertas-com-bandits\">Otimização de ofertas com bandits</h3>\n<p><b>Problema:</b> escolher, a cada visita, qual oferta mostrar, aprendendo durante a operação.<br/>\n<b>Armadilha:</b> não registrar a probabilidade da oferta exibida — sem ela, a avaliação off-policy fica impossível.<br/>\n<b>Modelos:</b> Thompson Sampling; LinUCB quando houver contexto do cliente; RL completo só se a oferta alterar o comportamento futuro.<br/>\n<b>Métrica:</b> regret e conversão acumulada; IPS/SNIPS para avaliar políticas novas no log.</p></div>\n</div>\n",
+ "toc": [
+  {
+   "id": "churn-de-assinantes",
+   "texto": "Churn de assinantes",
+   "nivel": 2
+  },
+  {
+   "id": "deteccao-de-fraude",
+   "texto": "Detecção de fraude",
+   "nivel": 3
+  },
+  {
+   "id": "previsao-de-demanda",
+   "texto": "Previsão de demanda",
+   "nivel": 3
+  },
+  {
+   "id": "segmentacao-de-clientes",
+   "texto": "Segmentação de clientes",
+   "nivel": 3
+  },
+  {
+   "id": "risco-de-credito",
+   "texto": "Risco de crédito",
+   "nivel": 3
+  },
+  {
+   "id": "manutencao-preditiva",
+   "texto": "Manutenção preditiva",
+   "nivel": 3
+  },
+  {
+   "id": "recomendacao-em-e-commerce",
+   "texto": "Recomendação em e-commerce",
+   "nivel": 3
+  },
+  {
+   "id": "otimizacao-de-ofertas-com-bandits",
+   "texto": "Otimização de ofertas com bandits",
+   "nivel": 3
+  }
+ ],
+ "recursos": [
+  "ml"
+ ],
+ "complemento": null,
+ "grupo": "Parte IV — Decisão",
+ "tags": []
+}

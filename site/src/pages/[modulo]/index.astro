@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import { modulos, paginas, url } from '../../lib/dados.js';
+
+export function getStaticPaths() {
+  return modulos.map((m) => ({ params: { modulo: m.id }, props: { m } }));
+}
+const { m } = Astro.props;
+const itens = m.paginas.map((s) => paginas[s]);
+---
+<Base titulo={`${m.numero}. ${m.titulo}`} descricao={m.resumo} slugAtual={m.id} semToc>
+  <nav class="migalhas" aria-label="Você está em">
+    <ol>
+      <li><a href="/">Início</a></li>
+      <li><span aria-current="page">{m.numero}. {m.titulo}</span></li>
+    </ol>
+  </nav>
+  <article data-pagefind-body>
+    <header class="cabeca-pagina">
+      <h1 data-pagefind-meta="title">{m.titulo}</h1>
+      <p class="meta-pagina">Módulo {m.numero} de {modulos.length - 1} · {itens.length} páginas</p>
+      <p class="cabeca-pagina__descricao">{m.resumo}</p>
+    </header>
+    <ol class="lista-paginas">
+      {itens.map((p) => (
+        <li>
+          <a class="cartao-link" href={url(p.slug)}>
+            <span class="lista-paginas__material">{p.origem.material}</span>
+            <span class="lista-paginas__titulo">{p.nav}</span>
+            <span class="lista-paginas__desc">{p.descricao}</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </article>
+</Base>

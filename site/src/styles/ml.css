@@ -1,0 +1,214 @@
+/* Manual de Machine Learning: cartões de modelo, legenda, caixas, fluxos, fórmulas e o diagnóstico.
+   Roxo marca "isto é dado ou modelo" (seção 1 do design system); ciano só o que é clicável. */
+
+/* ---------------- cartão de modelo ---------------- */
+.modelos { display: grid; gap: var(--space-3); margin: var(--space-4) 0 var(--space-8); }
+details.modelo {
+  border: var(--border-width) solid var(--line-data);
+  border-radius: var(--radius-base);
+  background: var(--color-bg-surface);
+  transition: background-color var(--transition-base);
+}
+details.modelo > summary {
+  list-style: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-1) var(--space-4);
+  align-items: baseline;
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-base);
+  transition: background-color var(--transition-base);
+}
+details.modelo > summary::-webkit-details-marker { display: none; }
+details.modelo > summary:hover { background: var(--color-bg-surface-raised); }
+details.modelo > summary::after {
+  content: "+";
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+  color: var(--color-accent-primary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-lg);
+}
+details.modelo[open] > summary::after { content: "−"; }
+.modelo__nome { margin: 0; font-size: var(--font-size-lg); grid-column: 1; }
+.modelo__tags { display: flex; flex-wrap: wrap; gap: var(--space-1); grid-column: 1 / -1; }
+.modelo__resumo { grid-column: 1 / -1; font-size: var(--font-size-sm); color: var(--color-text-secondary); }
+.modelo__corpo { padding: 0 var(--space-6) var(--space-6); border-top: var(--border-width) solid var(--color-border); }
+.modelo__pres { margin: var(--space-4) 0; font-size: var(--font-size-sm); }
+.modelo__blocos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4) var(--space-6); }
+.bloco-ml { min-width: 0; padding-top: var(--space-3); border-top: var(--border-width) solid var(--color-border); font-size: var(--font-size-sm); }
+.bloco-ml--largo { grid-column: 1 / -1; }
+.bloco-ml__h {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-secondary);
+}
+.bloco-ml__n { font-family: var(--font-family-mono); color: var(--color-accent-data-text); letter-spacing: 0; }
+.bloco-ml__c > :last-child { margin-bottom: 0; }
+
+/* ---------------- notebook modelo (download do template genérico) dentro do cartão ---------------- */
+.modelo__notebooks {
+  margin: var(--space-4) 0;
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-base);
+  background: var(--color-bg-surface-raised);
+  font-size: var(--font-size-sm);
+}
+.modelo__notebooks-titulo { margin: 0 0 var(--space-2); font-size: var(--font-size-xs); font-weight: var(--weight-medium); color: var(--color-text-secondary); }
+.modelo__notebooks-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+.modelo__notebooks-lista li { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); }
+.modelo__notebooks-lista .botao { max-width: 100%; text-align: left; overflow-wrap: anywhere; } /* nomes de arquivo longos quebram no celular */
+.modelo__notebooks-desc { flex: 1 1 18rem; min-width: 0; color: var(--color-text-secondary); }
+
+/* ---------------- legenda e índice dos modelos ---------------- */
+.legend { margin: var(--space-4) 0 var(--space-2); }
+.toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); margin: var(--space-2) 0 var(--space-6); }
+.indice-modelos { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr)); gap: var(--space-3); }
+.indice-modelos__item {
+  margin: 0;
+  display: grid;
+  gap: var(--space-1);
+  align-content: start;
+  padding: var(--space-4);
+  border: var(--border-width) solid var(--line-data);
+  border-radius: var(--radius-base);
+  background: var(--color-bg-surface);
+}
+.indice-modelos__item > a { font-weight: var(--weight-semibold); }
+.indice-modelos__resumo { font-size: var(--font-size-sm); color: var(--color-text-secondary); }
+
+/* ---------------- níveis da matriz dos sete critérios ---------------- */
+.nivel { font-family: var(--font-family-mono); font-size: var(--font-size-xs); font-weight: var(--weight-medium); white-space: nowrap; }
+.nv-bom { color: var(--color-accent-success); }
+.nv-ruim { color: var(--color-accent-warning); }
+.nv-medio { color: var(--color-text-secondary); }
+
+/* ---------------- blocos estáticos do manual ---------------- */
+.hero { margin-bottom: var(--space-8); }
+.kpis { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-4) 0 var(--space-6); }
+.kpi {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-surface);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+.kpi b { font-family: var(--font-family-mono); color: var(--color-text-primary); font-weight: var(--weight-medium); }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); margin: var(--space-4) 0 var(--space-6); }
+.box {
+  padding: var(--space-4) var(--space-6);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-base);
+  background: var(--color-bg-surface);
+  font-size: var(--font-size-sm);
+}
+.box h3, .box h4 { margin: 0 0 var(--space-2); font-size: var(--font-size-base); }
+.box > :last-child { margin-bottom: 0; }
+div.flow { display: grid; gap: var(--space-2); margin: var(--space-4) 0 var(--space-6); }
+.step {
+  display: grid;
+  grid-template-columns: var(--space-8) minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: start;
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-surface);
+  font-size: var(--font-size-sm);
+}
+.step .n {
+  display: grid;
+  place-items: center;
+  width: var(--space-8);
+  height: var(--space-8);
+  border-radius: var(--radius-full);
+  background: var(--color-bg-surface-raised);
+  font-family: var(--font-family-mono);
+  color: var(--color-text-primary);
+}
+.arrow { text-align: center; color: var(--color-text-secondary); line-height: var(--leading-tight); }
+.eq {
+  display: block;
+  margin: var(--space-3) 0 var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-width) solid var(--line-data);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-surface);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+.pill-estado { font-family: var(--font-family-mono); }
+
+/* ---------------- callouts gerados pelo diagnóstico (classes do manual original) ---------------- */
+.callout.ok { border-color: var(--line-success); }
+.callout.warn { border-color: var(--line-warning); }
+.callout.bad { border-color: var(--line-error); }
+.callout .ctitle { display: block; margin-bottom: var(--space-1); font-weight: var(--weight-semibold); }
+
+/* ---------------- diagnóstico do dataset ---------------- */
+.dx-drop {
+  display: grid;
+  gap: var(--space-2);
+  justify-items: center;
+  width: 100%;
+  margin: var(--space-4) 0;
+  padding: var(--space-8) var(--space-6);
+  border: var(--border-width-strong) dashed var(--color-border-input);
+  border-radius: var(--radius-base);
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  text-align: center;
+  transition: border-color var(--transition-base), background-color var(--transition-base);
+}
+.dx-drop:hover, .dx-drop.over { border-color: var(--color-accent-primary); background: var(--color-bg-surface-raised); }
+.dx-drop b { font-weight: var(--weight-medium); font-size: var(--font-size-lg); }
+.dx-drop b span { color: var(--color-accent-primary); text-decoration: underline; }
+.dx-drop small { color: var(--color-text-secondary); }
+.dx-form { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: var(--space-4); margin: var(--space-4) 0 var(--space-6); }
+.dx-form label { display: grid; gap: var(--space-1); font-size: var(--font-size-sm); font-weight: var(--weight-medium); }
+.dx-hint { font-size: var(--font-size-xs); font-weight: var(--weight-regular); color: var(--color-text-secondary); }
+.dx-tipo { font-family: var(--font-family-mono); font-size: var(--font-size-xs); color: var(--color-accent-data-text); }
+.dx-item {
+  margin: 0 0 var(--space-3);
+  padding: var(--space-4) var(--space-6);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-base);
+  background: var(--color-bg-surface);
+}
+.dx-item h4 { display: flex; gap: var(--space-2); align-items: baseline; margin: 0 0 var(--space-2); font-size: var(--font-size-base); }
+.dx-item h4 i { font-style: normal; font-family: var(--font-family-mono); color: var(--color-accent-data-text); }
+.dx-item > :last-child { margin-bottom: 0; }
+.dx-alto { border-color: var(--line-warning); }
+.dx-sev {
+  display: inline-block;
+  margin-right: var(--space-1);
+  padding: 0 var(--space-2);
+  border: var(--border-width) solid var(--color-border-strong);
+  border-radius: var(--radius-full);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+}
+.dx-sev.alto { background: var(--tint-warning); border-color: var(--line-warning); color: var(--color-accent-warning); }
+.dx-sev.medio { color: var(--color-text-primary); }
+.dx-sev.info { color: var(--color-text-secondary); }
+
+@media (max-width: 767px) {
+  .modelo__blocos, .grid2 { grid-template-columns: minmax(0, 1fr); }
+  details.modelo > summary, .modelo__corpo { padding-left: var(--space-4); padding-right: var(--space-4); }
+}
+@media print {
+  details.modelo { break-inside: auto; }
+  .bloco-ml, .box, .step { break-inside: avoid; }
+}

@@ -1,0 +1,315 @@
+{
+ "modulos": [
+  {
+   "id": "comecar",
+   "titulo": "Começar",
+   "numero": 0,
+   "resumo": "Como o manual funciona, o roteiro de um projeto de dados e o pedido que dá origem ao relatório.",
+   "paginas": [
+    "comecar/como-usar",
+    "comecar/roteiro-rapido",
+    "comecar/relatorio-profissional",
+    "comecar/entender-a-demanda"
+   ]
+  },
+  {
+   "id": "preparar",
+   "titulo": "Preparar os dados",
+   "numero": 1,
+   "resumo": "Ambiente, importação de arquivos e bancos SQL, primeira inspeção e limpeza.",
+   "paginas": [
+    "preparar/configuracao-do-ambiente",
+    "preparar/importacao-dos-dados",
+    "preparar/consultas-sql",
+    "preparar/primeira-inspecao",
+    "preparar/limpeza-e-tratamento",
+    "preparar/preparar-os-dados-no-relatorio"
+   ]
+  },
+  {
+   "id": "explorar",
+   "titulo": "Explorar",
+   "numero": 2,
+   "resumo": "Estatística descritiva, distribuições, outliers, relações entre variáveis, tempo e métricas de negócio.",
+   "paginas": [
+    "explorar/estatistica-descritiva",
+    "explorar/analise-univariada",
+    "explorar/outliers",
+    "explorar/analise-bivariada-e-multivariada",
+    "explorar/analise-temporal",
+    "explorar/metricas-de-negocio"
+   ]
+  },
+  {
+   "id": "visualizar",
+   "titulo": "Visualizar",
+   "numero": 3,
+   "resumo": "Referência técnica de gráficos do notebook e o guia de matplotlib e seaborn com storytelling de dados.",
+   "paginas": [
+    "visualizar/referencia-tecnica",
+    "visualizar/guia-matplotlib-seaborn",
+    "visualizar/fundamentos",
+    "visualizar/eixos-de-knaflic",
+    "visualizar/catalogo-de-graficos",
+    "visualizar/antes-e-depois",
+    "visualizar/roteiro-de-montagem",
+    "visualizar/erros-comuns",
+    "visualizar/referencia-rapida"
+   ]
+  },
+  {
+   "id": "inferir",
+   "titulo": "Inferir",
+   "numero": 4,
+   "resumo": "Testes de hipótese, testes A/B, tamanho de efeito, regressão linear e a análise vista pelo relatório.",
+   "paginas": [
+    "inferir/conceitos-e-pressupostos",
+    "inferir/testes-de-hipotese",
+    "inferir/proporcoes-e-testes-ab",
+    "inferir/efeito-e-automacao",
+    "inferir/regressao-linear",
+    "inferir/analisar-no-relatorio"
+   ]
+  },
+  {
+   "id": "modelar",
+   "titulo": "Machine Learning",
+   "numero": 5,
+   "resumo": "Manual de Machine Learning: fundamentos, 43 modelos, treinamento, decisão, paradigmas especializados, diagnóstico de dataset, skill de decisão e auditoria.",
+   "paginas": [
+    "modelar/manual-de-machine-learning",
+    "modelar/diagnostico-do-dataset",
+    "modelar/fundamentos",
+    "modelar/aprendizado-supervisionado",
+    "modelar/aprendizado-nao-supervisionado",
+    "modelar/metodos-probabilisticos",
+    "modelar/redes-neurais-e-deep-learning",
+    "modelar/regularizacao",
+    "modelar/otimizacao-e-funcoes-de-perda",
+    "modelar/avaliacao-e-validacao",
+    "modelar/selecao-de-modelos",
+    "modelar/feature-engineering",
+    "modelar/pipeline-ponta-a-ponta",
+    "modelar/arvore-de-decisao-de-modelos",
+    "modelar/estrategias-por-dataset",
+    "modelar/casos-praticos",
+    "modelar/checklist-profissional",
+    "modelar/sistemas-de-recomendacao",
+    "modelar/aprendizagem-por-reforco",
+    "modelar/aprendizagem-semissupervisionada",
+    "modelar/skill-de-decisao",
+    "modelar/auditoria-tecnica"
+   ]
+  },
+  {
+   "id": "comunicar",
+   "titulo": "Comunicar",
+   "numero": 6,
+   "resumo": "Insights, estrutura do relatório, comunicação, revisão, entrega e o checklist final.",
+   "paginas": [
+    "comunicar/insights-e-comunicacao",
+    "comunicar/estruturar-o-relatorio",
+    "comunicar/comunicar-resultados",
+    "comunicar/revisar-e-entregar",
+    "comunicar/checklist-final"
+   ]
+  }
+ ],
+ "abertura": {
+  "titulo": "Notebook Mestre de Análise de Dados",
+  "subtitulo": "Manual prático e template de referência",
+  "citacao_html": "<strong>Recebi um novo dataset. Por onde começo?</strong> Este notebook responde a essa pergunta seguindo a ordem real de um projeto: importar → conhecer → limpar → descrever → explorar → testar → comunicar."
+ },
+ "indice": [
+  {
+   "numero": "0",
+   "secao": "Roteiro rápido",
+   "pergunta": "Qual a sequência de trabalho?",
+   "url": "/comecar/roteiro-rapido/"
+  },
+  {
+   "numero": "1",
+   "secao": "Configuração do ambiente",
+   "pergunta": "Quais bibliotecas e opções preparar?",
+   "url": "/preparar/configuracao-do-ambiente/"
+  },
+  {
+   "numero": "2",
+   "secao": "Importação dos dados",
+   "pergunta": "Como carregar arquivos e consultar bancos de dados (SQL)?",
+   "url": "/preparar/importacao-dos-dados/"
+  },
+  {
+   "numero": "3",
+   "secao": "Primeira inspeção",
+   "pergunta": "Qual a estrutura, que tipos de dados há e o que está faltando?",
+   "url": "/preparar/primeira-inspecao/"
+  },
+  {
+   "numero": "4",
+   "secao": "Limpeza e tratamento",
+   "pergunta": "Como deixar os dados prontos para análise e combinar tabelas?",
+   "url": "/preparar/limpeza-e-tratamento/"
+  },
+  {
+   "numero": "5",
+   "secao": "Estatística descritiva",
+   "pergunta": "Como resumir cada variável em números?",
+   "url": "/explorar/estatistica-descritiva/"
+  },
+  {
+   "numero": "6",
+   "secao": "Análise univariada (gráficos)",
+   "pergunta": "Qual o formato de cada distribuição?",
+   "url": "/explorar/analise-univariada/"
+  },
+  {
+   "numero": "7",
+   "secao": "Outliers",
+   "pergunta": "Existem valores extremos? O que fazer com eles?",
+   "url": "/explorar/outliers/"
+  },
+  {
+   "numero": "8",
+   "secao": "Análise bivariada e multivariada",
+   "pergunta": "Como as variáveis se relacionam?",
+   "url": "/explorar/analise-bivariada-e-multivariada/"
+  },
+  {
+   "numero": "9",
+   "secao": "Análise temporal",
+   "pergunta": "Como os dados se comportam no tempo e quanto variam entre períodos?",
+   "url": "/explorar/analise-temporal/"
+  },
+  {
+   "numero": "10",
+   "secao": "Métricas de negócio",
+   "pergunta": "Como medir desempenho: KPIs, funil, coorte e retenção?",
+   "url": "/explorar/metricas-de-negocio/"
+  },
+  {
+   "numero": "11",
+   "secao": "Visualização: referência técnica",
+   "pergunta": "Como construir, combinar e formatar gráficos?",
+   "url": "/visualizar/referencia-tecnica/"
+  },
+  {
+   "numero": "12",
+   "secao": "Estatística inferencial",
+   "pergunta": "As diferenças observadas são estatisticamente significativas? E o teste A/B?",
+   "url": "/inferir/conceitos-e-pressupostos/"
+  },
+  {
+   "numero": "13",
+   "secao": "Regressão linear",
+   "pergunta": "Qual é a tendência linear entre duas variáveis, e quanto ela explica?",
+   "url": "/inferir/regressao-linear/"
+  },
+  {
+   "numero": "14",
+   "secao": "Insights e comunicação",
+   "pergunta": "Como transformar resultados em conclusões e entregáveis?",
+   "url": "/comunicar/insights-e-comunicacao/"
+  },
+  {
+   "numero": "15",
+   "secao": "Checklist final",
+   "pergunta": "Esqueci alguma etapa?",
+   "url": "/comunicar/checklist-final/"
+  }
+ ],
+ "estatisticas": {
+  "paginas": 58,
+  "figuras": 98,
+  "codigos": 289,
+  "tabelas": 165
+ },
+ "versoes_guia": "Python 3.14.7, matplotlib 3.11.1, seaborn 0.13.2, pandas 3.0.5 e NumPy 2.5.2",
+ "sobre": {
+  "readme_viz": "<h3>Guia matplotlib e seaborn com storytelling de dados</h3>\n<p>Guia interativo em um único arquivo HTML que funciona como manual de matplotlib e seaborn e, ao mesmo tempo, como manual prático das ideias de Cole Nussbaumer Knaflic em <em>Storytelling com Dados</em>.</p>\n<p>Abra <code>guia_matplotlib_seaborn.html</code> em qualquer navegador. Não há dependências externas: CSS, JavaScript e imagens estão embutidos no arquivo.</p>\n<h4>Conteúdo do guia</h4>\n<ol>\n<li><strong>Fundamentos</strong>: anatomia de uma figura, interfaces pyplot e orientada a objetos, estilos e rcParams, o papel do seaborn e quando usar cada biblioteca.</li>\n<li><strong>Os seis eixos de Knaflic</strong>, ligados às linhas de código que os aplicam.</li>\n<li><strong>Catálogo</strong> com 16 gráficos, cada um com objetivo, critérios de escolha, código completo e a imagem gerada.</li>\n<li><strong>Antes e depois</strong>: bordas e grades, cor como destaque, rótulos diretos, título com a conclusão e anotações.</li>\n<li><strong>Roteiro de montagem</strong>: contexto, grande ideia, storyboard, estrutura narrativa e o gráfico em cinco etapas.</li>\n<li><strong>Erros comuns</strong>: eixo truncado, 3D, eixo secundário e excesso de cores.</li>\n<li><strong>Referência rápida</strong>: tabela pergunta → gráfico, funções de estilo reutilizáveis e checklist.</li>\n</ol>\n<h4>Estrutura do repositório</h4>\n<div aria-label=\"Arquivos do pacote\" class=\"tabela\" role=\"region\" tabindex=\"0\"><table class=\"tabela-dados\">\n<thead>\n<tr>\n<th>Arquivo</th>\n<th>Função</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>guia_matplotlib_seaborn.html</code></td>\n<td>Guia pronto (resultado do build)</td>\n</tr>\n<tr>\n<td><code>build.py</code></td>\n<td>Monta o HTML: executa cada exemplo, captura a figura e grava o arquivo final</td>\n</tr>\n<tr>\n<td><code>kit.py</code></td>\n<td>Motor: preâmbulos de estilo, execução dos códigos, compressão das imagens, mapa de eixos por linha</td>\n</tr>\n<tr>\n<td><code>fundamentos.py</code></td>\n<td>Parte 1: fundamentos</td>\n</tr>\n<tr>\n<td><code>catalogo.py</code></td>\n<td>Parte 3: catálogo de gráficos</td>\n</tr>\n<tr>\n<td><code>story.py</code></td>\n<td>Partes 2, 4, 5 e 6: eixos, antes e depois, roteiro e erros comuns</td>\n</tr>\n<tr>\n<td><code>referencia.py</code></td>\n<td>Parte 7: referência rápida e créditos</td>\n</tr>\n<tr>\n<td><code>estilo.css</code></td>\n<td>Estilos da página</td>\n</tr>\n<tr>\n<td><code>app.js</code></td>\n<td>Interatividade: realce de sintaxe, busca, filtros, abas, antes e depois, copiar código</td>\n</tr>\n</tbody>\n</table></div>\n<h4>Como gerar o HTML de novo</h4>\n<div class=\"codigo\" data-lang=\"text\"><div class=\"codigo__barra\" data-pagefind-ignore=\"\"><span class=\"codigo__lang\">bash</span><button class=\"codigo__copiar\" data-copiar=\"\" type=\"button\">Copiar</button></div><pre aria-label=\"Código bash\" class=\"codigo__pre\" tabindex=\"0\"><code><span class=\"ln\" data-n=\"1\">python -m venv .venv</span>\n<span class=\"ln\" data-n=\"2\">source .venv/bin/activate</span>\n<span class=\"ln\" data-n=\"3\">pip install -r requirements.txt</span>\n<span class=\"ln\" data-n=\"4\">python build.py</span></code></pre></div><p>Na primeira execução, <code>sns.load_dataset</code> baixa os conjuntos <code>tips</code>, <code>flights</code> e <code>iris</code> da internet. O build leva poucos segundos e informa no terminal o número de imagens, o tamanho do arquivo e os avisos emitidos pelas bibliotecas.</p>\n<p>Cada imagem do guia é produzida executando exatamente o código exibido ao lado dela. Para alterar um exemplo, edite o código no módulo correspondente e rode o build.</p>\n<h4>Versões usadas</h4>\n<p>Python 3.14, matplotlib 3.11.1, seaborn 0.13.2, pandas 3.0.5, NumPy 2.5.2 e Pillow 12.3.0.</p>\n<h4>Créditos</h4>\n<ul>\n<li>Ideias de storytelling: Cole Nussbaumer Knaflic, <em>Storytelling with Data</em> (Wiley, 2015), publicado no Brasil como <em>Storytelling com Dados</em>. Todas parafraseadas; itens incertos estão marcados no guia como \"a confirmar no livro\".</li>\n<li>Exemplos-base adaptados de notebooks e apostilas de estudo do autor do projeto, incluindo material da Pierian Data e da Asimov Academy, cuja autoria permanece com quem os produziu.</li>\n<li>Dados: sintéticos ou conjuntos embutidos no seaborn.</li>\n</ul>\n",
+  "readme_rel": "<h3>Guia do relatório profissional em dados</h3>\n<p>Guia e manual interativo para montar um relatório de dados profissional e entregá-lo ao demandante, com um modelo de relatório em Word para download.</p>\n<h4>Arquivos</h4>\n<div aria-label=\"Arquivos do pacote\" class=\"tabela\" role=\"region\" tabindex=\"0\"><table class=\"tabela-dados\">\n<thead>\n<tr>\n<th>Arquivo</th>\n<th>Conteúdo</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>guia_relatorio_profissional_dados.html</code></td>\n<td>Guia interativo autocontido (HTML, CSS e JavaScript no mesmo arquivo).</td>\n</tr>\n<tr>\n<td><code>modelo_relatorio_dados.docx</code></td>\n<td>Modelo de relatório em branco, com a mesma estrutura de seções do guia.</td>\n</tr>\n</tbody>\n</table></div>\n<h4>Como usar</h4>\n<ol>\n<li>Mantenha os dois arquivos na mesma pasta: o guia aponta para o modelo por um link relativo (\"Baixar modelo de relatório (.docx)\").</li>\n<li>Abra <code>guia_relatorio_profissional_dados.html</code> em qualquer navegador. Não é preciso instalar nada nem ter acesso à internet.</li>\n<li>No Word, ao abrir o modelo, aceite atualizar os campos para gerar o sumário (ou clique com o botão direito no sumário e escolha \"Atualizar campo\").</li>\n</ol>\n<h4>Observações</h4>\n<ul>\n<li>Todos os exemplos usam dados fictícios sobre uma empresa inventada.</li>\n<li>As marcações das listas de verificação e os campos do briefing ficam só na aba aberta e voltam ao início quando a página é recarregada.</li>\n</ul>\n",
+  "readme_ml": "<h3>Manual de Machine Learning</h3>\n<p>Manual de estudo, consulta e decisão em Machine Learning, num único arquivo HTML estático: taxonomia rigorosa, 43 modelos no mesmo template de 20 blocos, matrizes de decisão, métricas, validação, pipeline e checklist profissional — com as APIs de setembro de 2026 (scikit-learn 1.9.1, XGBoost 3.4.1, LightGBM 4.x, CatBoost 1.2.x, Keras 3, PyTorch 2.x).</p>\n<h4>Como abrir</h4>\n<p>Abra <code>manual_machine_learning.html</code> no navegador. Não há build, backend nem dependências externas; para publicar, basta servir a pasta como site estático (GitHub Pages, Netlify, qualquer servidor de arquivos).</p>\n<h4>Arquivos</h4>\n<div aria-label=\"Arquivos do pacote\" class=\"tabela\" role=\"region\" tabindex=\"0\"><table class=\"tabela-dados\">\n<thead>\n<tr>\n<th>Arquivo</th>\n<th>Papel</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>manual_machine_learning.html</code></td>\n<td>O manual: estudo e consulta, com busca, filtros por categoria e tema claro/escuro</td>\n</tr>\n<tr>\n<td><code>skill_decisao_ml.md</code></td>\n<td>A skill de decisão: regras IF/THEN, hierarquia de complexidade, Model Fit Score e diagnóstico de 16 itens</td>\n</tr>\n<tr>\n<td><code>auditoria_ml.md</code></td>\n<td>Relatório da auditoria técnica (APIs, fórmulas, execução dos trechos de código)</td>\n</tr>\n<tr>\n<td><code>auditoria/</code></td>\n<td>Scripts que reproduzem a auditoria (<code>bash auditoria/rodar_tudo.sh</code>)</td>\n</tr>\n</tbody>\n</table></div>\n<h4>Diagnóstico do seu dataset</h4>\n<p>A seção <strong>Diagnóstico do seu dataset</strong> do manual recebe um arquivo CSV, TSV, JSON/JSON Lines ou XLSX e devolve o diagnóstico de 16 itens da skill: tipo de problema, modelos candidatos e frameworks, pré-processamento, métrica, validação, alertas sobre o dataset e um código Python inicial. As regras são determinísticas e rodam inteiramente no navegador: o arquivo não é enviado a nenhum servidor. O módulo não treina modelos — devolve um plano de experimentos.</p>\n<h4>Reproduzir a auditoria</h4>\n<p>Os ambientes Python não fazem parte do repositório. Para recriá-los e rodar as seis baterias, siga a seção 6 de <code>auditoria_ml.md</code>:</p>\n<div class=\"codigo\" data-lang=\"text\"><div class=\"codigo__barra\" data-pagefind-ignore=\"\"><span class=\"codigo__lang\">bash</span><button class=\"codigo__copiar\" data-copiar=\"\" type=\"button\">Copiar</button></div><pre aria-label=\"Código bash\" class=\"codigo__pre\" tabindex=\"0\"><code><span class=\"ln\" data-n=\"1\">bash auditoria/rodar_tudo.sh</span></code></pre></div><p class=\"muted small\">Arquivo <code>.gitignore</code> do pacote:</p><div class=\"codigo\" data-lang=\"text\"><div class=\"codigo__barra\" data-pagefind-ignore=\"\"><span class=\"codigo__lang\">.gitignore</span><button class=\"codigo__copiar\" data-copiar=\"\" type=\"button\">Copiar</button></div><pre aria-label=\"Código .gitignore\" class=\"codigo__pre\" tabindex=\"0\"><code><span class=\"ln\" data-n=\"1\"># ambientes de auditoria (recriáveis — ver auditoria_ml.md, seção 6)</span>\n<span class=\"ln\" data-n=\"2\">.venv-auditoria/</span>\n<span class=\"ln\" data-n=\"3\">.venv-tf/</span>\n<span class=\"ln\" data-n=\"4\">.uv-python/</span>\n<span class=\"ln\" data-n=\"5\"></span>\n<span class=\"ln\" data-n=\"6\"># artefatos de execução</span>\n<span class=\"ln\" data-n=\"7\">catboost_info/</span>\n<span class=\"ln\" data-n=\"8\">__pycache__/</span>\n<span class=\"ln\" data-n=\"9\">*.pyc</span>\n<span class=\"ln\" data-n=\"10\"></span>\n<span class=\"ln\" data-n=\"11\"># sistema</span>\n<span class=\"ln\" data-n=\"12\">.DS_Store</span></code></pre></div>",
+  "notebooks_ml": [
+   {
+    "arquivo": "modelo_ml_regressao_linear.ipynb",
+    "titulo": "Regressão linear com gradiente descendente",
+    "descricao": "custo, gradiente e gradiente descendente implementados do zero para n features, com treino/teste, MAE, RMSE, R², resíduos e validação contra a forma fechada.",
+    "origem": "C1_W2_Linear_Regression.ipynb",
+    "modelo": "Regressão Linear",
+    "url": "/modelar/aprendizado-supervisionado/#m-linear-regression"
+   },
+   {
+    "arquivo": "modelo_ml_regressao_polinomial_vies_variancia.ipynb",
+    "titulo": "Regressão polinomial e viés × variância",
+    "descricao": "treino/validação/teste, escolha do grau e de λ, curva de aprendizado e, opcionalmente, redes simples, complexas e regularizadas.",
+    "origem": "C2_W3_Assignment.ipynb",
+    "modelo": "Regressão Polinomial",
+    "url": "/modelar/aprendizado-supervisionado/#m-polynomial"
+   },
+   {
+    "arquivo": "modelo_ml_regressao_logistica.ipynb",
+    "titulo": "Regressão logística com e sem regularização",
+    "descricao": "sigmoide, log loss e gradiente do zero, expansão polinomial opcional e L2, ROC-AUC, PR-AUC, escolha do limiar e comparação com LogisticRegression.",
+    "origem": "C1_W3_Logistic_Regression.ipynb",
+    "modelo": "Regressão Logística",
+    "url": "/modelar/aprendizado-supervisionado/#m-logistic"
+   },
+   {
+    "arquivo": "modelo_ml_arvore_de_decisao.ipynb",
+    "titulo": "Árvore de decisão do zero",
+    "descricao": "entropia ou Gini, ganho de informação, limiares para features numéricas, construção recursiva, previsão, regras legíveis e comparação com DecisionTreeClassifier.",
+    "origem": "C2_W4_Decision_Tree_with_Markdown.ipynb",
+    "modelo": "Decision Tree",
+    "url": "/modelar/aprendizado-supervisionado/#m-decision-tree"
+   },
+   {
+    "arquivo": "modelo_ml_kmeans.ipynb",
+    "titulo": "K-Means do zero",
+    "descricao": "atribuição e atualização vetorizadas, k-means++, várias inicializações, cotovelo e silhouette, perfil dos grupos e compressão de imagem opcional.",
+    "origem": "C3_W1_KMeans_Assignment.ipynb",
+    "modelo": "K-Means",
+    "url": "/modelar/aprendizado-nao-supervisionado/#m-kmeans"
+   },
+   {
+    "arquivo": "modelo_ml_deteccao_anomalias_gaussiana.ipynb",
+    "titulo": "Detecção de anomalias por densidade gaussiana",
+    "descricao": "densidade gaussiana em escala log (GMM de 1 componente), limiar ε pelo F1 na validação, teste separado e extensão para K componentes pelo BIC.",
+    "origem": "C3_W1_Anomaly_Detection.ipynb",
+    "modelo": "Gaussian Mixture Model (GMM)",
+    "url": "/modelar/aprendizado-nao-supervisionado/#m-gmm"
+   },
+   {
+    "arquivo": "modelo_ml_rede_neural_binaria.ipynb",
+    "titulo": "Rede neural para classificação binária",
+    "descricao": "MLP em Keras 3 com treino/validação/teste e early stopping, e a propagação direta reimplementada em NumPy e conferida com o Keras.",
+    "origem": "C2_W1_Assignment.ipynb",
+    "modelo": "Rede Neural (MLP)",
+    "url": "/modelar/redes-neurais-e-deep-learning/#m-mlp"
+   },
+   {
+    "arquivo": "modelo_ml_rede_neural_multiclasse.ipynb",
+    "titulo": "Rede neural multiclasse com softmax",
+    "descricao": "ReLU, saída linear com from_logits=True, softmax estável em NumPy, métricas por classe e análise dos erros.",
+    "origem": "C2_W2_Assignment.ipynb",
+    "modelo": "Rede Neural (MLP)",
+    "url": "/modelar/redes-neurais-e-deep-learning/#m-mlp"
+   },
+   {
+    "arquivo": "modelo_ml_recomendacao_conteudo_rede_neural.ipynb",
+    "titulo": "Recomendação por conteúdo com rede de duas torres",
+    "descricao": "vetores de usuário e de item treinados juntos, RMSE contra baseline, precision@k e NDCG@k, novos usuários e itens semelhantes.",
+    "origem": "C3_W2_RecSysNN_Assignment.ipynb",
+    "modelo": "Filtragem baseada em conteúdo",
+    "url": "/modelar/sistemas-de-recomendacao/#m-content-based"
+   },
+   {
+    "arquivo": "modelo_ml_dqn.ipynb",
+    "titulo": "Deep Q-Network com replay e rede-alvo",
+    "descricao": "qualquer ambiente Gymnasium de ações discretas, atualização suave da rede-alvo, ε-gulosa e avaliação gulosa separada do treino.",
+    "origem": "C3_W3_A1_Assignment.ipynb",
+    "modelo": "Deep Q-Network (DQN)",
+    "url": "/modelar/aprendizagem-por-reforco/#m-dqn"
+   }
+  ]
+ }
+}

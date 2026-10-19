@@ -1,0 +1,49 @@
+{
+ "slug": "modelar/avaliacao-e-validacao",
+ "modulo": "modelar",
+ "tipo": "ml",
+ "titulo": "8. Avaliação e validação",
+ "nav": "8. Avaliação e validação",
+ "sobretitulo": "Manual de Machine Learning · Parte III — Treinamento",
+ "descricao": "Vazamento é informação disponível no treino que não existirá no momento da previsão . É a causa mais comum de modelos excelentes na validação e inúteis em…",
+ "origem": {
+  "material": "Manual de Machine Learning",
+  "trecho": "seção 8"
+ },
+ "html": "\n<h2 id=\"s8-1\">8.1 Métricas por tipo de problema</h2>\n<div aria-label=\"8.1 Métricas por tipo de problema\" class=\"tabela\" role=\"region\" tabindex=\"0\"><table class=\"\">\n<thead><tr><th scope=\"col\">Problema</th><th scope=\"col\">Métrica</th><th scope=\"col\">Leitura</th><th scope=\"col\">Quando é a métrica principal</th></tr></thead>\n<tbody>\n<tr><td rowspan=\"4\"><b>Regressão</b></td><td>MAE</td><td>Erro médio absoluto, na unidade do target</td><td>Erros grandes não devem pesar mais que proporcionalmente</td></tr>\n<tr><td>RMSE</td><td>Raiz do MSE, na unidade do target</td><td>Erros grandes são desproporcionalmente caros</td></tr>\n<tr><td>R²</td><td>Fração da variância explicada</td><td>Comunicação; nunca sozinho</td></tr>\n<tr><td>MAPE</td><td>Erro percentual</td><td>Comparar séries de escalas diferentes; quebra se y≈0</td></tr>\n<tr><td rowspan=\"6\"><b>Classificação</b></td><td>Accuracy</td><td>Fração de acertos</td><td>Somente com classes equilibradas e custos simétricos</td></tr>\n<tr><td>Precision</td><td>Dos previstos positivos, quantos são positivos</td><td>Falso positivo é caro (bloquear cliente bom)</td></tr>\n<tr><td>Recall</td><td>Dos positivos reais, quantos foram capturados</td><td>Falso negativo é caro (fraude, doença)</td></tr>\n<tr><td>F1</td><td>Média harmônica de precision e recall</td><td>Ambos importam e não há custo explícito</td></tr>\n<tr><td>ROC-AUC</td><td>Ordenação global; 0,5 = aleatório</td><td>Classes razoavelmente equilibradas</td></tr>\n<tr><td><b>PR-AUC</b></td><td>Área da curva precision-recall</td><td><b>Classe positiva rara</b> — mais informativa que ROC (Saito &amp; Rehmsmeier, 2015)</td></tr>\n<tr><td><b>Clustering</b></td><td>Silhouette · Davies-Bouldin · Calinski-Harabasz</td><td>Coesão e separação</td><td>Sem rótulos; complementadas por validação de negócio</td></tr>\n</tbody>\n</table></div>\n<h3 id=\"matriz-de-confusao\">Matriz de confusão</h3>\n<div aria-label=\"Matriz de confusão\" class=\"tabela\" role=\"region\" tabindex=\"0\"><table class=\"\">\n<thead><tr><th scope=\"col\"></th><th scope=\"col\">Previsto negativo</th><th scope=\"col\">Previsto positivo</th></tr></thead>\n<tbody>\n<tr><th>Real negativo</th><td>VN — verdadeiro negativo</td><td>FP — falso positivo (erro tipo I)</td></tr>\n<tr><th>Real positivo</th><td>FN — falso negativo (erro tipo II)</td><td>VP — verdadeiro positivo</td></tr>\n</tbody>\n</table></div>\n<span class=\"eq\">Precision = VP / (VP + FP)     Recall = VP / (VP + FN)     F1 = 2·P·R / (P + R)</span>\n<h2 id=\"s8-2\">8.2 Threshold é decisão de negócio</h2>\n<div class=\"codigo\" data-lang=\"python\"><div class=\"codigo__barra\" data-pagefind-ignore=\"\"><span class=\"codigo__lang\">python</span><button class=\"codigo__copiar\" data-copiar=\"\" type=\"button\">Copiar</button></div><pre aria-label=\"Código python\" class=\"codigo__pre\" tabindex=\"0\"><code><span class=\"ln\" data-n=\"1\"><span class=\"tk-kw\">from</span> sklearn.model_selection <span class=\"tk-kw\">import</span> TunedThresholdClassifierCV, FixedThresholdClassifier</span>\n<span class=\"ln\" data-n=\"2\"><span class=\"tk-com\"># ajusta o corte por validacao cruzada (padrao: scoring=\"balanced_accuracy\")</span></span>\n<span class=\"ln\" data-n=\"3\">tuned = <span class=\"tk-fn\">TunedThresholdClassifierCV</span>(clf, scoring=<span class=\"tk-str\">\"</span><span class=\"tk-str\">f1</span><span class=\"tk-str\">\"</span>).<span class=\"tk-fn\">fit</span>(X_train, y_train)</span>\n<span class=\"ln\" data-n=\"4\"><span class=\"tk-bi\">print</span>(tuned.best_threshold_)</span>\n<span class=\"ln\" data-n=\"5\"><span class=\"tk-com\"># corte fixo definido pelo negocio</span></span>\n<span class=\"ln\" data-n=\"6\">fixo = <span class=\"tk-fn\">FixedThresholdClassifier</span>(clf, threshold=<span class=\"tk-num\">0.18</span>).<span class=\"tk-fn\">fit</span>(X_train, y_train)</span></code></pre></div>\n<h2 id=\"s8-3\">8.3 Estratégias de validação</h2>\n<div aria-label=\"8.3 Estratégias de validação\" class=\"tabela\" role=\"region\" tabindex=\"0\"><table class=\"\">\n<thead><tr><th scope=\"col\">Estratégia</th><th scope=\"col\">Uso</th><th scope=\"col\">Pressuposto</th></tr></thead>\n<tbody>\n<tr><td><b>Train/Test split</b></td><td>Estimativa única, rápida</td><td>Amostras i.i.d.; alta variância da estimativa em datasets pequenos</td></tr>\n<tr><td><b>Validation set</b></td><td>Tuning de hiperparâmetros sem tocar no teste</td><td>Dados suficientes para três partições</td></tr>\n<tr><td><b>K-Fold</b></td><td>Estimativa robusta com intervalo entre folds</td><td>Amostras i.i.d.</td></tr>\n<tr><td><b>Stratified K-Fold</b></td><td><b>Padrão em classificação</b>: preserva a proporção de classes</td><td>Evita folds sem a classe rara</td></tr>\n<tr><td><b>GroupKFold</b></td><td>Mesmo cliente/paciente/loja não pode aparecer em treino e teste</td><td>Existe agrupamento natural</td></tr>\n<tr><td><b>TimeSeriesSplit</b></td><td><b>Obrigatório em dados temporais</b>: treino sempre precede o teste</td><td>Ordem temporal relevante</td></tr>\n</tbody>\n</table></div>\n<h2 id=\"s8-4\">8.4 Data leakage</h2>\n<p>Vazamento é informação disponível no treino que <b>não existirá no momento da previsão</b>. É a causa mais comum de modelos excelentes na validação e inúteis em produção. O princípio central é a separação entre aprender e prever (Kaufman, Rosset, Perlich &amp; Stitelman, 2012).</p>\n<div aria-label=\"Vazamento é informação disponível no treino que não existirá no momento da previsão . É a causa mais comum de modelos ex\" class=\"tabela\" role=\"region\" tabindex=\"0\"><table class=\"\">\n<thead><tr><th scope=\"col\">Tipo</th><th scope=\"col\">Exemplo</th><th scope=\"col\">Correção</th></tr></thead>\n<tbody>\n<tr><td><b>Target leakage</b></td><td>Feature “valor estornado” num modelo de fraude</td><td>Auditar a linha do tempo de cada feature</td></tr>\n<tr><td><b>Train-test contamination</b></td><td><code>fit</code> do scaler no dataset completo antes do split</td><td>Todo pré-processamento dentro do <code>Pipeline</code>, ajustado só no treino</td></tr>\n<tr><td><b>Preprocessing leakage</b></td><td>Imputação com a média global; seleção de features com todos os dados</td><td>Transformadores dentro do CV</td></tr>\n<tr><td><b>Temporal leakage</b></td><td>Usar o futuro para prever o passado; K-Fold em série temporal</td><td><code>TimeSeriesSplit</code> e features de lag corretas</td></tr>\n<tr><td><b>Duplicatas / grupos</b></td><td>Mesma entidade em treino e teste</td><td>Deduplicar; <code>GroupKFold</code></td></tr>\n</tbody>\n</table></div>\n",
+ "toc": [
+  {
+   "id": "s8-1",
+   "texto": "8.1 Métricas por tipo de problema",
+   "nivel": 2
+  },
+  {
+   "id": "matriz-de-confusao",
+   "texto": "Matriz de confusão",
+   "nivel": 3
+  },
+  {
+   "id": "s8-2",
+   "texto": "8.2 Threshold é decisão de negócio",
+   "nivel": 2
+  },
+  {
+   "id": "s8-3",
+   "texto": "8.3 Estratégias de validação",
+   "nivel": 2
+  },
+  {
+   "id": "s8-4",
+   "texto": "8.4 Data leakage",
+   "nivel": 2
+  }
+ ],
+ "recursos": [
+  "ml"
+ ],
+ "complemento": null,
+ "grupo": "Parte III — Treinamento",
+ "tags": [
+  "Métricas"
+ ]
+}
