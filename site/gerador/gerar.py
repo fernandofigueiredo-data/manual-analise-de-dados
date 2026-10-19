@@ -1,12 +1,16 @@
-"""Gera o conteúdo do site a partir das cópias dos três materiais em gerador/origem/.
+"""Gera o conteúdo do site a partir das cópias dos materiais em gerador/origem/ e do estudo de caso.
 
-Uso (a partir de site/):  npm run gerar      ou   gerador/.venv/bin/python gerador/gerar.py [--reexecutar]
+Uso (a partir de site/):  npm run gerar      ou   gerador/.venv/bin/python gerador/gerar.py [--reexecutar] [--estudo-de-caso]
+
+--reexecutar      executa de novo o notebook mestre (senão usa gerador/cache/)
+--estudo-de-caso  baixa os dados da ANAC que faltarem e executa de novo o notebook do estudo de caso
 
 Saídas:
   src/conteudo/paginas/*.json   uma página por arquivo (HTML do corpo, índice, metadados)
   src/conteudo/navegacao.json   módulos, ordem da trilha, dados da página inicial
   public/img/notebook/*.webp    figuras do notebook (executado com o tema do design system)
   public/img/visualizacao/*.webp figuras do guia de visualização (executadas pelo código do guia)
+  public/img/estudo-de-caso/*.webp figuras do estudo de caso (notebook em gerador/estudo-de-caso/)
   public/downloads/             modelo .docx e notebook, sem alterações
   gerador/cache/relatorio.json  registro de substituições de cor, avisos e contagens
 """
@@ -23,6 +27,7 @@ from bs4 import BeautifulSoup, NavigableString
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import estrutura  # noqa: E402
+import estudo_caso  # noqa: E402
 import guia_ml  # noqa: E402
 import guia_relatorio  # noqa: E402
 import notebook  # noqa: E402
@@ -32,7 +37,8 @@ AQUI = Path(__file__).resolve().parent
 
 
 def limpar_saidas() -> None:
-    for pasta in (PUBLICO / "img" / "notebook", PUBLICO / "img" / "visualizacao", CONTEUDO / "paginas"):
+    for pasta in (PUBLICO / "img" / "notebook", PUBLICO / "img" / "visualizacao", PUBLICO / "img" / "estudo-de-caso",
+                  CONTEUDO / "paginas"):
         if pasta.exists():
             shutil.rmtree(pasta)
         pasta.mkdir(parents=True)
@@ -204,21 +210,21 @@ def main() -> None:
     reexecutar = "--reexecutar" in sys.argv
     limpar_saidas()
 
-    print("1/4 notebook: executando…")
+    print("1/6 notebook: executando…")
     nb = notebook.executar(forcar=reexecutar)
     abertura = notebook.cabecalho_abertura(nb)
     indice = notebook.indice_secoes(nb)
     figs_nb = [0]
 
-    print("2/4 guia de visualização: executando os exemplos…")
+    print("2/6 guia de visualização: executando os exemplos…")
     import guia_viz  # importa aqui: executa o kit do guia
     partes_viz = guia_viz.gerar_partes()
 
-    print("3/4 guia de relatório…")
+    print("3/6 guia de relatório…")
     partes_rel = guia_relatorio.paginas()
     guia_relatorio.copiar_downloads()
 
-    print("4/5 manual de machine learning…")
+    print("4/6 manual de machine learning…")
     dados_ml = guia_ml.dados()
     secoes_ml = guia_ml.secoes(dados_ml)
     guia_ml.gerar_scripts()
@@ -231,7 +237,13 @@ def main() -> None:
             if f'id="m-{m["id"]}"' in secoes_ml[p["parte"]]["html"]:
                 pagina_do_grupo[m["grupo"]] = p["slug"]
 
-    print("5/5 montando páginas…")
+    caso = "--estudo-de-caso" in sys.argv     # baixa ~1 GB da ANAC na primeira vez: só quando pedido
+    print("5/6 estudo de caso (ANAC)" + (": baixando os dados e executando…" if caso else ": notebook já executado…"))
+    nb_caso = estudo_caso.executar(forcar=caso)
+    estudo_caso.copiar_downloads()
+    figs_caso = [0]
+
+    print("6/6 montando páginas…")
     paginas = []
     for p in estrutura.PAGINAS:
         pg = dict(p)
@@ -245,6 +257,10 @@ def main() -> None:
                       html=info["html"], recursos=["viz"] + (["catalogo"] if p["parte"] == "cat" else []))
         elif p["tipo"] == "ml":
             pg.update(montar_ml(p, secoes_ml, dados_ml, pagina_do_grupo))
+        elif p["tipo"] == "caso":
+            pg["html"] = estudo_caso.renderizar_pagina(nb_caso, p, figs_caso)
+            pg["sobretitulo"] = "Estudo de caso · dados abertos da ANAC"
+            pg["recursos"] = []
         else:
             info = partes_rel[p["parte"]]
             pg.update(titulo=info["titulo"], sobretitulo=info["sobretitulo"] or "Guia do relatório",
@@ -264,7 +280,7 @@ def main() -> None:
             secoes.setdefault(num, (pg["slug"], f"secao-{m.group(1)}"))
 
     # mapas de âncoras por material (para links internos dos guias)
-    mapas = {"viz": {}, "rel": {}, "nb": {}, "ml": {}}
+    mapas = {"viz": {}, "rel": {}, "nb": {}, "ml": {}, "caso": {}}
     for pg in paginas:
         mapa = mapas[pg["tipo"]]
         for ident in re.findall(r'\sid="([^"]+)"', pg["html"]):
@@ -320,7 +336,7 @@ def main() -> None:
         "indice": linhas_indice,
         "estatisticas": {
             "paginas": len(paginas),
-            "figuras": figs_nb[0] + figs_viz,
+            "figuras": figs_nb[0] + figs_viz + figs_caso[0],
             "codigos": total_codigos,
             "tabelas": total_tabelas,
         },
@@ -337,7 +353,8 @@ def main() -> None:
 
     relatorio = {"substituicoes_de_cor": notebook.SUBSTITUICOES,
                  "substituicoes_de_cor_guia_viz": partes_viz.get("_substituicoes", []), "avisos_guia_viz": partes_viz["_avisos"],
-                 "estatisticas": nav["estatisticas"], "figuras_notebook": figs_nb[0], "figuras_guia": figs_viz}
+                 "estatisticas": nav["estatisticas"], "figuras_notebook": figs_nb[0], "figuras_guia": figs_viz,
+                 "figuras_estudo_de_caso": figs_caso[0]}
     (AQUI / "cache").mkdir(exist_ok=True)
     (AQUI / "cache" / "relatorio.json").write_text(json.dumps(relatorio, ensure_ascii=False, indent=1), encoding="utf-8")
     print(json.dumps(nav["estatisticas"], ensure_ascii=False), "| figuras notebook:", figs_nb[0], "| guia:", figs_viz)

@@ -90,8 +90,8 @@ def _math_bloco(self, tokens, idx, options, env):
 def _fence(self, tokens, idx, options, env):
     tok = tokens[idx]
     lang = (tok.info or "").strip().split()[0] if tok.info else "text"
-    if lang == "python":
-        return bloco_codigo(tok.content, "python")
+    if lang in ("python", "sql"):
+        return bloco_codigo(tok.content, lang)
     return bloco_codigo(tok.content, "text", rotulo="bash" if lang in ("bash", "sh") else "texto")
 
 

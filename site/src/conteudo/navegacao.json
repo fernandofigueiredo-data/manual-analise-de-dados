@@ -113,6 +113,19 @@
     "comunicar/revisar-e-entregar",
     "comunicar/checklist-final"
    ]
+  },
+  {
+   "id": "estudo-de-caso",
+   "titulo": "Estudo de caso: aviação",
+   "numero": 7,
+   "resumo": "A trilha aplicada a dados reais da ANAC: atraso, cancelamento e reclamações das três maiores companhias aéreas do Brasil, de 2023 a 2026.",
+   "paginas": [
+    "estudo-de-caso/aviacao-comercial",
+    "estudo-de-caso/preparar-os-dados",
+    "estudo-de-caso/explorar",
+    "estudo-de-caso/inferir",
+    "estudo-de-caso/prever-atrasos"
+   ]
   }
  ],
  "abertura": {
@@ -219,10 +232,10 @@
   }
  ],
  "estatisticas": {
-  "paginas": 58,
-  "figuras": 98,
-  "codigos": 289,
-  "tabelas": 165
+  "paginas": 63,
+  "figuras": 108,
+  "codigos": 329,
+  "tabelas": 191
  },
  "versoes_guia": "Python 3.14.7, matplotlib 3.11.1, seaborn 0.13.2, pandas 3.0.5 e NumPy 2.5.2",
  "sobre": {

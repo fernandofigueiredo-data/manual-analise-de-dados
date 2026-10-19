@@ -8,7 +8,9 @@ O site é uma **trilha de aprendizado de análise de dados** com o notebook mest
 - o **guia de matplotlib e seaborn** forma o módulo “Visualizar”, logo depois da seção 11 do notebook (“Visualização: referência técnica”), que é o ponto em que o notebook para de usar gráficos como ferramenta e passa a tratá-los como assunto;
 - o **manual de Machine Learning** (com a skill de decisão e a auditoria) forma o módulo “Machine Learning”, entre “Inferir” e “Comunicar”: depois da regressão linear como ferramenta estatística (seção 13 do notebook), a trilha passa à modelagem preditiva, e só então volta à comunicação dos resultados (seção 14). Dentro do módulo, a ordem é a do próprio manual (Início; Partes I a V), seguida da skill e da auditoria.
 
-O conteúdo não foi reescrito. Páginas novas (início, abertura de módulo, sobre) contêm apenas navegação, títulos e informações sobre o próprio site.
+Depois do módulo “Comunicar”, o **estudo de caso** (módulo 7) percorre a mesma trilha com dados reais da ANAC: é o único conteúdo escrito para o site, e o seu notebook fica em `site/gerador/estudo-de-caso/`.
+
+O conteúdo dos quatro materiais não foi reescrito. Páginas novas (início, abertura de módulo, sobre) contêm apenas navegação, títulos e informações sobre o próprio site.
 
 ## 2. Mapa do site
 
@@ -79,19 +81,26 @@ O conteúdo não foi reescrito. Páginas novas (início, abertura de módulo, so
 │   ├── comunicar-resultados/            Comunicar                         (guia de relatório: etapa 5)
 │   ├── revisar-e-entregar/              Revisar e entregar                (guia de relatório: etapa 6)
 │   └── checklist-final/                 15. Checklist final               (notebook §15)
+├── /estudo-de-caso/                     Módulo 7 · Estudo de caso: aviação (dados reais da ANAC)
+│   ├── aviacao-comercial/               Pergunta, achados e limites         (notebook do estudo de caso: §0, §11 e §12)
+│   ├── preparar-os-dados/               Preparar: download, SQL e qualidade (§1 a §4)
+│   ├── explorar/                        Explorar: KPIs e funil              (§5 a §7)
+│   ├── inferir/                         Inferir: testes e regressão         (§8 e §9)
+│   └── prever-atrasos/                  Machine Learning: risco de atraso   (§10)
 ├── /sobre/                              Sobre o site e os materiais de origem
 └── /downloads/                          modelo_relatorio_dados.docx · Notebook_Mestre_Analise_de_Dados.ipynb · skill_decisao_ml.md · auditoria_ml.md
                                          · 10 notebooks modelo de ML (modelo_ml_*.ipynb, seção 5.5)
+                                         · Estudo_de_Caso_Aviacao_ANAC.ipynb (executado, com as saídas)
 ```
 
-Total: 1 página inicial, 7 aberturas de módulo, 58 páginas de conteúdo (21 do notebook, 9 do guia de visualização, 6 do guia de relatório e 22 do pacote de Machine Learning), 1 página “Sobre” e 1 página 404.
+Total: 1 página inicial, 8 aberturas de módulo, 63 páginas de conteúdo (21 do notebook, 9 do guia de visualização, 6 do guia de relatório, 22 do pacote de Machine Learning e 5 do estudo de caso), 1 página “Sobre” e 1 página 404.
 
 ## 3. Navegação
 
 | Elemento | Comportamento |
 |---|---|
 | Cabeçalho fixo | marca (leva ao início), busca global (botão e atalhos `/` e `Ctrl/⌘ K`), alternador de tema, botão de menu abaixo de 768 px |
-| Navegação lateral | sete módulos na ordem da trilha, cada um recolhível, com as páginas numeradas como no material de origem; no módulo Machine Learning, as páginas ficam agrupadas pelas partes do manual (Início, Parte I a V, Skill e auditoria); página atual marcada com `aria-current="page"`; “Sobre” no fim. No celular, gaveta com véu, fecha com Esc |
+| Navegação lateral | oito módulos na ordem da trilha (os sete da trilha e o estudo de caso), cada um recolhível, com as páginas numeradas como no material de origem; no módulo Machine Learning, as páginas ficam agrupadas pelas partes do manual (Início, Parte I a V, Skill e auditoria); página atual marcada com `aria-current="page"`; “Sobre” no fim. No celular, gaveta com véu, fecha com Esc |
 | Índice da página | lista dos h2 e h3 da página, com realce da seção visível; coluna à direita a partir de 1200 px, bloco recolhível “Nesta página” abaixo disso |
 | Trilha de navegação | “Início › Módulo › Página” no topo de cada página |
 | Anterior / próxima | no fim de cada página, na ordem da trilha, atravessando módulos |

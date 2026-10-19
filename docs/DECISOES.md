@@ -81,7 +81,7 @@ WebP sem perdas com `width`/`height` declarados e `loading="lazy"` (98 figuras, 
 ## 5. Interface
 
 - **Tokens:** `src/styles/tokens.css` é o único arquivo com valores literais; `scripts/verificar-tokens.mjs` falha o build se encontrar cor, fonte, tamanho, espaçamento, raio, sombra ou duração literal em outro CSS, atributo `style` em componentes ou conteúdo gerado, ou cor literal em SVG do conteúdo. Exceções pontuais exigem o comentário `token-exceção` (6 linhas: texto só para leitor de tela, opacidade de 40% do estado desabilitado, ícone de ampliar em duas regras, altura do código no guia, duração do indicador de carregamento). Fora do CSS: cor da `<meta name="theme-color">` e do `favicon.svg`.
-- **Navegação:** barra lateral com sete módulos recolhíveis; no módulo Machine Learning, as páginas ficam agrupadas pelas partes do manual. Índice da página sempre presente (ignora títulos dentro de painéis ocultos); abaixo de 1200 px vira “Nesta página”; abaixo de 768 px a navegação vira gaveta.
+- **Navegação:** barra lateral com oito módulos recolhíveis (os sete da trilha e o estudo de caso); no módulo Machine Learning, as páginas ficam agrupadas pelas partes do manual. Índice da página sempre presente (ignora títulos dentro de painéis ocultos); abaixo de 1200 px vira “Nesta página”; abaixo de 768 px a navegação vira gaveta.
 - **Busca global** em diálogo (`/` ou `Ctrl/⌘ K`), com navegação por setas e destaque do termo na página de destino.
 - **Guia de visualização:** busca e filtros do catálogo no topo da lista; links “onde aparece no código” atravessam páginas (`?eixo=`).
 - **Guia de relatório:** progresso por lista (o “progresso geral” deixou de fazer sentido com o guia dividido em páginas); marcações não gravadas, como no original.

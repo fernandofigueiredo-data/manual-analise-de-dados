@@ -34,6 +34,8 @@ gerador/.venv/bin/python -m ipykernel install --prefix gerador/.venv --name anal
 npm run gerar:tudo
 ```
 
+O estudo de caso com dados da ANAC (`gerador/estudo-de-caso/`) fica de fora dessas execuções: o notebook é versionado já executado, e o gerador só lê as saídas dele. Para baixar os dados (cerca de 1 GB, fora do git) e executá-lo de novo, `npm run gerar:caso`; detalhes em `gerador/estudo-de-caso/LEIAME.md`.
+
 O gerador também usa o Node (já instalado para o site) para extrair os dados do manual de ML. `gerar:tudo` executa o notebook e os exemplos do guia de visualização (cerca de 3 minutos); `npm run gerar` reaproveita o notebook já executado em `gerador/cache/`. Na primeira execução, o seaborn baixa os conjuntos `tips`, `flights` e `iris`.
 
 ## Verificações
@@ -52,7 +54,8 @@ Os resultados ficam em `../docs/qualidade/` (do Lighthouse, só o `RESUMO.md` va
 
 | Caminho | Conteúdo |
 |---|---|
-| `gerador/` | gerador: `gerar.py` (orquestra), `notebook.py`, `guia_viz.py`, `guia_relatorio.py`, `guia_ml.py` e `extrair_ml.mjs` (manual de ML), `estrutura.py` (arquitetura da informação), `tema.py` (tema dos gráficos), `alt_notebook.py` (textos alternativos) |
+| `gerador/` | gerador: `gerar.py` (orquestra), `notebook.py`, `guia_viz.py`, `guia_relatorio.py`, `guia_ml.py` e `extrair_ml.mjs` (manual de ML), `estudo_caso.py` (estudo de caso), `estrutura.py` (arquitetura da informação), `tema.py` (tema dos gráficos), `alt_notebook.py` (textos alternativos) |
+| `gerador/estudo-de-caso/` | estudo de caso com dados da ANAC: notebook executado, download com hash, SQL do modelo estrela e agregados; os dados brutos ficam em `dados/`, fora do git |
 | `src/scripts/gerado/` | script do diagnóstico de dataset e função de realce, copiados sem alteração do manual de ML |
 | `gerador/origem/` | cópias dos materiais de origem, sem alterações |
 | `src/conteudo/` | páginas geradas (JSON) e navegação |

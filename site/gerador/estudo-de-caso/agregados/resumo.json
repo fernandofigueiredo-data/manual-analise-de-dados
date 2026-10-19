@@ -1,0 +1,76 @@
+{
+ "periodo_reclamacoes": "jan/2023 a dez/2025",
+ "periodo_voos": "jan/2023 a ago/2026",
+ "voos_analisados": 2751509,
+ "reclamacoes_analisadas": 238158,
+ "cancelamento_coef": 7.012816307055434,
+ "cancelamento_ic": [
+  2.9776531204862486,
+  11.04797949362462
+ ],
+ "cancelamento_pct_media": 8.73895493841091,
+ "cancelamento_operacionais_coef": 2.4785889125999825,
+ "atraso_operacionais_coef": 0.24333678325336372,
+ "atraso_operacionais_ic": [
+  0.043693914821461705,
+  0.44297965168526576
+ ],
+ "placebo_cobranca_coef": 0.7912903711711801,
+ "placebo_cobranca_ic": [
+  -0.5923926925357725,
+  2.1749734348781327
+ ],
+ "atraso_coef_m3": 0.409953664750633,
+ "atraso_ic_m3": [
+  -0.5535688713588784,
+  1.3734762008601444
+ ],
+ "atraso_coef_m2": 2.808983140776297,
+ "r2_controles": 0.8147240008517803,
+ "r2_completo": 0.867450527445559,
+ "r2_parcial_operacao": 0.2845836850762183,
+ "media_reclamacoes_100k": 80.24776825695183,
+ "conversao_por_mil": {
+  "Azul": 19.81,
+  "Gol": 18.46,
+  "LATAM": 15.55
+ },
+ "conversao_ic": {
+  "Azul": [
+   19.095505936261237,
+   20.54859514260654
+  ],
+  "Gol": [
+   17.66919458613948,
+   19.279397278738042
+  ],
+  "LATAM": [
+   14.877314807705607,
+   16.253756828773763
+  ]
+ },
+ "ml_teste": {
+  "prevalência": {
+   "ROC-AUC": 0.5,
+   "PR-AUC": 0.0748,
+   "Brier": 0.0692,
+   "Brier skill (vs prevalência)": 0.0
+  },
+  "histórico companhia × hora": {
+   "ROC-AUC": 0.602,
+   "PR-AUC": 0.1038,
+   "Brier": 0.0686,
+   "Brier skill (vs prevalência)": 0.0089
+  },
+  "gradient boosting": {
+   "ROC-AUC": 0.653,
+   "PR-AUC": 0.127,
+   "Brier": 0.0679,
+   "Brier skill (vs prevalência)": 0.0193
+  }
+ },
+ "ml_top10_taxa": 15.616282267887312,
+ "ml_top10_lift": 2.0876544676838944,
+ "ml_top10_captura": 20.876667717197183,
+ "nao_avaliada_2025_pct": 49.60325140313528
+}

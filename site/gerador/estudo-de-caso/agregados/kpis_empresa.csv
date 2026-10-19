@@ -1,0 +1,4 @@
+empresa,voos_previstos,pct_cancelados,pct_atraso15_partida,pct_atraso15_chegada,mediana_atraso_partida_min,p95_atraso_partida_min,ocupacao_pct
+Azul,1039728,2.3707,14.1546,14.6208,-2.0000,45.0000,81.0521
+Gol,784412,1.6017,15.4259,15.4788,-2.0000,40.0000,83.0847
+LATAM,927370,1.6387,16.7139,16.2653,-1.0000,39.0000,82.8196

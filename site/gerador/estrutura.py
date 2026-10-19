@@ -8,6 +8,7 @@ NB = "Notebook mestre"
 VIZ = "Guia matplotlib e seaborn"
 REL = "Guia do relatório profissional"
 ML = "Manual de Machine Learning"
+CASO = "Estudo de caso ANAC"
 
 MODULOS = [
     {"id": "comecar", "titulo": "Começar", "numero": 0,
@@ -24,11 +25,14 @@ MODULOS = [
      "resumo": "Manual de Machine Learning: fundamentos, 43 modelos, treinamento, decisão, paradigmas especializados, diagnóstico de dataset, skill de decisão e auditoria."},
     {"id": "comunicar", "titulo": "Comunicar", "numero": 6,
      "resumo": "Insights, estrutura do relatório, comunicação, revisão, entrega e o checklist final."},
+    {"id": "estudo-de-caso", "titulo": "Estudo de caso: aviação", "numero": 7,
+     "resumo": "A trilha aplicada a dados reais da ANAC: atraso, cancelamento e reclamações das três maiores companhias aéreas do Brasil, de 2023 a 2026."},
 ]
 
 # tipo "nb": células [ini, fim] do notebook (inclusive)
 # tipo "viz": parte do guia de visualização
 # tipo "rel": seção do guia de relatório
+# tipo "caso": seções ("## N.") do notebook do estudo de caso
 PAGINAS = [
     # ---------------------------------------------------------- Começar
     {"slug": "comecar/como-usar", "modulo": "comecar", "tipo": "nb", "celulas": (0, 0), "secao": None,
@@ -174,4 +178,20 @@ PAGINAS = [
     {"slug": "comunicar/checklist-final", "modulo": "comunicar", "tipo": "nb", "celulas": (266, 266), "secao": "15",
      "titulo": "15. Checklist final", "nav": "15. Checklist final",
      "origem": (NB, "seção 15 (célula 266)")},
+    # ---------------------------------------------------------- Estudo de caso (dados reais da ANAC)
+    {"slug": "estudo-de-caso/aviacao-comercial", "modulo": "estudo-de-caso", "tipo": "caso", "secoes": ("0", "11", "12"),
+     "titulo": "Estudo de caso: atraso, cancelamento e reclamações na aviação", "nav": "Pergunta, achados e limites",
+     "origem": (CASO, "seções 0, 11 e 12")},
+    {"slug": "estudo-de-caso/preparar-os-dados", "modulo": "estudo-de-caso", "tipo": "caso", "secoes": ("1", "2", "3", "4"),
+     "titulo": "Estudo de caso: download, modelo estrela e qualidade dos dados", "nav": "Preparar: download, SQL e qualidade",
+     "origem": (CASO, "seções 1 a 4")},
+    {"slug": "estudo-de-caso/explorar", "modulo": "estudo-de-caso", "tipo": "caso", "secoes": ("5", "6", "7"),
+     "titulo": "Estudo de caso: pontualidade, sazonalidade e funil da reclamação", "nav": "Explorar: KPIs e funil",
+     "origem": (CASO, "seções 5 a 7")},
+    {"slug": "estudo-de-caso/inferir", "modulo": "estudo-de-caso", "tipo": "caso", "secoes": ("8", "9"),
+     "titulo": "Estudo de caso: testes de proporção e regressão das reclamações", "nav": "Inferir: testes e regressão",
+     "origem": (CASO, "seções 8 e 9")},
+    {"slug": "estudo-de-caso/prever-atrasos", "modulo": "estudo-de-caso", "tipo": "caso", "secoes": ("10",),
+     "titulo": "Estudo de caso: risco de atraso com validação temporal", "nav": "Machine Learning: risco de atraso",
+     "origem": (CASO, "seção 10")},
 ]

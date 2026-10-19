@@ -1,0 +1,4 @@
+modelo,ROC-AUC,PR-AUC,Brier,Brier skill (vs prevalência)
+prevalência,0.50000,0.07480,0.06921,0.00000
+histórico companhia × hora,0.60202,0.10382,0.06859,0.00891
+gradient boosting,0.65305,0.12697,0.06787,0.01927

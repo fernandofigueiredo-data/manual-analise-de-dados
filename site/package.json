@@ -9,6 +9,7 @@
   "scripts": {
     "gerar": "gerador/.venv/bin/python gerador/gerar.py",
     "gerar:tudo": "gerador/.venv/bin/python gerador/gerar.py --reexecutar",
+    "gerar:caso": "gerador/.venv/bin/python gerador/gerar.py --estudo-de-caso",
     "verificar": "node scripts/verificar-tokens.mjs",
     "verificar:conteudo": "gerador/.venv/bin/python gerador/verificar_conteudo.py",
     "dev": "astro dev",

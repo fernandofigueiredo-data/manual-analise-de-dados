@@ -1,7 +1,7 @@
 {
- "data": "2026-10-02T12:22:44.607Z",
+ "data": "2026-10-19T11:20:41.810Z",
  "base": "http://localhost:4321",
- "paginas": 67,
+ "paginas": 73,
  "violacoes": [],
  "teclado": [
   {
@@ -22,7 +22,7 @@
   {
    "nome": "Busca retorna resultados para \"qui-quadrado\"",
    "ok": true,
-   "det": "6 resultados"
+   "det": "9 resultados"
   },
   {
    "nome": "Setas + Enter abrem um resultado",

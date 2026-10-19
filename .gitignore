@@ -28,3 +28,6 @@ docs/qualidade/lighthouse/*.json
 .impeccable/
 .vscode/
 .idea/
+
+# Dados brutos do estudo de caso (baixados por site/gerador/estudo-de-caso/baixar_dados.py)
+site/gerador/estudo-de-caso/dados/

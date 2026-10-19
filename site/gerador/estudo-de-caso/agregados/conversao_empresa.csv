@@ -1,0 +1,4 @@
+empresa,voos_cancelados,voos_atraso15_chegada,nao_resolvidas_operacionais,reclamacoes_operacionais,nao_resolvidas,passageiros_domesticos,voos_com_problema,ic_inf,ic_sup,nao_resolvidas_operacionais_por_mil,ic_inf_por_mil,ic_sup_por_mil,pct_nao_resolvidas_entre_operacionais,operacionais_por_mil_problemas,pct_cancelados_entre_problemas
+Azul,21886,123682,2884,21524,8974,84474734.0000,145568,2779.6946,2991.2179,19.8120,19.0955,20.5486,13.3990,147.8622,15.0349
+Gol,10725,99940,2043,12887,8332,85697816.0000,110665,1955.3614,2133.5545,18.4611,17.6692,19.2794,15.8532,116.4505,9.6914
+LATAM,12682,114937,1985,14776,12074,106092224.0000,127619,1898.6280,2074.2882,15.5541,14.8773,16.2538,13.4339,115.7821,9.9374

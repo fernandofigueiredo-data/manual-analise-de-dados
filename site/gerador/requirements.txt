@@ -18,3 +18,6 @@ markdown-it-py
 mdit-py-plugins
 latex2mathml
 beautifulsoup4
+# estudo de caso (gerador/estudo-de-caso/)
+duckdb
+scikit-learn
