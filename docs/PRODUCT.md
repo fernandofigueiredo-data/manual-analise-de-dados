@@ -16,7 +16,7 @@ Manual e guia de referência em português do Brasil sobre análise de dados, or
 
 ## Positioning
 
-Reúne em uma única trilha quatro materiais do mesmo autor (notebook mestre de análise de dados, guia de matplotlib e seaborn com storytelling, guia do relatório profissional e manual de Machine Learning com skill de decisão e auditoria), com o notebook como espinha dorsal, código executado de verdade com as saídas e gráficos reais, e um diagnóstico de dataset que roda no navegador sem enviar o arquivo a servidor algum.
+Reúne em uma única trilha quatro materiais do mesmo autor (notebook mestre de análise de dados, guia de matplotlib e seaborn com storytelling, guia do relatório profissional e manual de Machine Learning com skill de decisão e auditoria), com o notebook como espinha dorsal, código executado de verdade com as saídas e gráficos da execução (sobre dados sintéticos de exemplo), e um diagnóstico de dataset que roda no navegador sem enviar o arquivo a servidor algum.
 
 ## Operating Context
 

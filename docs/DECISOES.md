@@ -1,6 +1,6 @@
 # Decisões de implementação
 
-Registro atualizado em 01/10/2026, depois de duas mudanças pedidas pelo autor: a inclusão do **manual e guia de data science** (`data-science-htlm.zip`) e a troca completa do design system pelo **Design System — Developer / Data Science / AI** (`design-system-visual.md`).
+Registro atualizado em 01/10/2026, depois de duas mudanças de escopo: a inclusão do **manual e guia de data science** (`data-science-htlm.zip`) e a troca completa do design system pelo **Design System — Developer / Data Science / AI** (`design-system-visual.md`).
 
 ## 1. Stack
 
@@ -35,7 +35,7 @@ Alternativas descartadas: **Starlight** e **Docusaurus** trazem CSS próprio que
 - **Fórmulas** do notebook em MathML (`latex2mathml`), sem JavaScript.
 - **Referências cruzadas.** “Seção 4.2” e afins viram links; links internos dos guias e do manual de ML (`#r-estilo`, `#s8-4`, `#m-xgboost`, `skill_decisao_ml.md`) apontam para a página certa.
 - **Saídas do notebook.** O original não tinha saídas; elas vêm da execução do notebook inteiro (Python 3.14.7, pandas 3.0.5, NumPy 2.5.2, matplotlib 3.11.1, seaborn 0.13.2, SciPy, statsmodels, pingouin, scikit-posthocs), sem erros.
-- **Guia de visualização.** Módulos de conteúdo e funções de `build.py` executados sem alteração; só a renderização do `kit.py` foi trocada (`gerador/guia_viz.py`). Com as versões fixadas iguais às do guia, 60 das 62 imagens saíam idênticas pixel a pixel às originais; depois, por sua escolha, foram regeneradas no tema do design system (ver 4.2).
+- **Guia de visualização.** Módulos de conteúdo e funções de `build.py` executados sem alteração; só a renderização do `kit.py` foi trocada (`gerador/guia_viz.py`). Com as versões fixadas iguais às do guia, 60 das 62 imagens saíam idênticas pixel a pixel às originais; depois, por decisão de projeto, foram regeneradas no tema do design system (ver 4.2).
 - **Guia de relatório.** HTML original convertido para os componentes do site; script de interação portado.
 - **Manual de ML.**
   - Os **43 cartões** e a **matriz dos sete critérios** são renderizados no build a partir dos dados do próprio manual, na mesma ordem e com o mesmo conteúdo das funções `cardHtml()` e `renderMatriz()`. Ficam no HTML (indexados pela busca e legíveis sem JavaScript), dentro de `details` recolhíveis.
@@ -71,7 +71,7 @@ Registro completo em `gerador/cache/relatorio.json`. Dados, cálculos, tipos de 
 
 ### 4.2 Guia de visualização e guia de relatório
 
-- As 62 figuras do guia de visualização foram regeneradas no tema escuro, por sua escolha (V1, opção b). Como no notebook, as cores são trocadas só no código executado, por `gerador/guia_viz.py`: um prelúdio aplica o tema (fundo Grafite, texto, grade, JetBrains Mono, ordem categórica) e reaplica-o depois de `sns.set_theme`/`set_style`; as cores literais do guia viram cores do sistema (azul → Ciano, laranja → Âmbar, cinzas → cinzas do tema, `"white"` → Grafite, exceto nomes de estilo e a cor de texto escolhida por célula no mapa de calor). As figuras que demonstram os estilos prontos e o mapa `Blues` ficam como estão, porque o texto as descreve. 305 trocas em 56 figuras, registradas em `gerador/cache/relatorio.json`. As amostras de cor do guia no site passaram a mostrar as cores usadas.
+- As 62 figuras do guia de visualização foram regeneradas no tema escuro, por decisão de projeto (V1, opção b). Como no notebook, as cores são trocadas só no código executado, por `gerador/guia_viz.py`: um prelúdio aplica o tema (fundo Grafite, texto, grade, JetBrains Mono, ordem categórica) e reaplica-o depois de `sns.set_theme`/`set_style`; as cores literais do guia viram cores do sistema (azul → Ciano, laranja → Âmbar, cinzas → cinzas do tema, `"white"` → Grafite, exceto nomes de estilo e a cor de texto escolhida por célula no mapa de calor). As figuras que demonstram os estilos prontos e o mapa `Blues` ficam como estão, porque o texto as descreve. 305 trocas em 56 figuras, registradas em `gerador/cache/relatorio.json`. As amostras de cor do guia no site passaram a mostrar as cores usadas.
 - Os 3 gráficos SVG do guia de relatório usam tokens: acompanham os dois temas e destacam em Ciano (`OBSERVACOES.md`, V3).
 
 ### 4.3 Formato e acessibilidade
@@ -89,7 +89,7 @@ WebP sem perdas com `width`/`height` declarados e `loading="lazy"` (98 figuras, 
 ## 5.1 Refinamento com a skill impeccable
 
 - **Instalação:** skill `impeccable` v4.5.0, usada localmente (`.claude/` e `.impeccable/`, fora deste repositório), com ganchos que rodam o detector a cada edição. Contexto do produto em `docs/PRODUCT.md`.
-- **Escopo:** só interface, por sua escolha; o conteúdo dos materiais não mudou (`npm run verificar:conteudo` segue em 10.292 de 10.292).
+- **Escopo:** só interface, por decisão de projeto; o conteúdo dos materiais não mudou (`npm run verificar:conteudo` segue em 10.292 de 10.292).
 - **Detector:** de 675 achados para 0 primários (7 avisos de travessão no texto dos materiais). O que mudou:
   - página inicial sem sobretítulo e sem bloco de indicadores; linha de fatos em JetBrains Mono; trilha como lista ordenada, materiais e páginas de módulo como listas, no lugar de grades de cartões;
   - sobretítulos acima do h1 viraram linha de metadados abaixo do título, em todas as páginas;
@@ -121,10 +121,10 @@ WebP sem perdas com `width`/`height` declarados e `loading="lazy"` (98 figuras, 
 | Lighthouse ≥ 90 | `docs/qualidade/lighthouse/RESUMO.md`: 9 páginas, perfis móvel e desktop: desempenho 98 a 99, acessibilidade, boas práticas e SEO 100 |
 | Tokens | `npm run verificar` |
 
-O Lighthouse foi medido contra o build de produção servido localmente (`astro preview`), com a limitação de rede e CPU simulada do próprio Lighthouse; os números na Vercel só podem ser confirmados depois do deploy.
+O Lighthouse foi medido contra o build de produção servido localmente (`astro preview`), com a limitação de rede e CPU simulada do próprio Lighthouse; os números no ambiente da Vercel ainda não foram medidos.
 
-## 7. O que não foi feito
+## 7. Publicação e pendências
 
-- Nenhum deploy, publicação ou repositório remoto; o projeto também não foi colocado sob controle de versão (`git init`), porque isso não foi pedido. O `.gitignore` está pronto.
-- `SITE_URL` não definida: sem ela, o site não emite `<link rel="canonical">` nem sitemap.
+- **Publicado em 18/10/2026:** repositório no GitHub e deploy na Vercel a partir da branch `main` (Root Directory `site`, Node 24.x, `SITE_URL=https://manual-analise-de-dados.vercel.app`, que gera o `<link rel="canonical">`).
+- Ainda não há sitemap.
 - Os scripts da auditoria do manual de ML não foram executados (exigem ambientes próprios com TensorFlow, PyTorch e boosting); ver `OBSERVACOES.md`, M5.
